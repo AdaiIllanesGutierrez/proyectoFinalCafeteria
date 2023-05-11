@@ -1,4 +1,4 @@
-describe("Sumador", () => {
+describe("Mostrar Menu", () => {
     it("Shows the menu", () => {
       cy.visit("/");
     //   cy.get("#primer-numero").type(4);
