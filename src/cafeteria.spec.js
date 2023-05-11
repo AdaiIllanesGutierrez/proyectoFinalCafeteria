@@ -1,7 +1,10 @@
-import cafeteria from "./cafeteria.js";
+import MostrarMenu from "./cafeteria.js";
 
 describe("Sumar", () => {
   it("deberia mostrar un producto", () => {
-    expect(cafeteria()).toEqual("cafe");
+    expect(MostrarMenu("cafe")).toEqual("cafe");
+  });
+  it("deberia mostrar  una lista  de productos", () => {
+    expect(MostrarMenu(["cafe","mocca","te"])).toEqual(["cafe","mocca","te"]);
   });
 });

@@ -1,4 +1,4 @@
-function Cafeteria(){
-    return "cafe";
+function MostrarMenu(productos){
+    return productos;
 }
- export default Cafeteria;
+ export default MostrarMenu;
