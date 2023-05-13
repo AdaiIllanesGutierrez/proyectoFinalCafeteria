@@ -11,12 +11,15 @@ describe("Mostrar Lista de Productos Estatica", () => {
 
 describe("Reservar un producto de una lista Estatica", () => {
   it("Agregar el primer producto de la lista a la lista de reservas", () => {
-    expect(Reservar(["cafe","mocca","te"],[""])).toEqual(["cafe"]);
+    expect(Reservar(["cafe","mocca","te"],["cafe"])).toEqual(["cafe"]);
   });
   it("Agregar los dos primeros productos de la lista a la lista de reservas", () => {
-    expect(Reservar(["cafe","mocca"],["",""])).toEqual(["cafe","mocca"]);
+    expect(Reservar(["cafe","mocca"],["cafe","mocca"])).toEqual(["cafe","mocca"]);
   });
   it("deberia buscar el producto de la lista de reservas en la lista de productos ", () => {
     expect(Reservar(["cafe","mocca"],["mocca"])).toEqual(["mocca"]);
+  });
+  it("deberia buscar los productos de la lista de reservas en la lista de productos y devolver la lista de reservas", () => {
+    expect(Reservar(["cafe","mocca","te","sandwich"],["mocca","sandwich"])).toEqual(["mocca","sandwich"]);
   });
 });

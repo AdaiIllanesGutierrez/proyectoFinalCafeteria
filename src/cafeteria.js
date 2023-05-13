@@ -3,9 +3,12 @@ function Reservar(productos,reservas)
     let listaReservas= [];
     for(var i=0;i<productos.length;i++)
     {
-        if(productos[i]===reservas[0])
+        for(var j=0;j<reservas.length;j++)
         {
-            listaReservas.push(productos[i]);
+            if(productos[i]===reservas[j])
+            {
+                listaReservas.push(productos[i])
+            }
         }
     }
     return listaReservas;
