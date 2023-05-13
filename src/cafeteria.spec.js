@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu } from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas } from "./cafeteria.js";
 
 describe("Mostrar Lista de Productos Estatica", () => {
   it("deberia mostrar un producto", () => {
@@ -21,5 +21,10 @@ describe("Reservar un producto de una lista Estatica", () => {
   });
   it("deberia buscar los productos de la lista de reservas en la lista de productos y devolver la lista de reservas", () => {
     expect(Reservar(["cafe","mocca","te","sandwich"],["mocca","sandwich"])).toEqual(["mocca","sandwich"]);
+  });
+});
+describe("Mostrar Lista de Reservas", () => {
+  it("deberia mostrar un producto", () => {
+    expect(MostrarListaReservas("cafe")).toEqual("cafe");
   });
 });

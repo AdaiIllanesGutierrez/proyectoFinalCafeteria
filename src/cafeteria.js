@@ -13,8 +13,10 @@ function Reservar(productos,reservas)
     }
     return listaReservas;
 }
-
+function MostrarListaReservas(reservas){
+    return reservas;
+}
 function MostrarMenu(productos){
     return productos;
 }
-module.exports = { Reservar, MostrarMenu };
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas };
