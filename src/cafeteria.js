@@ -1,14 +1,12 @@
 function Reservar(productos,reservas)
 {
     let listaReservas= [];
-    if(reservas.length==1)
+    for(var i=0;i<productos.length;i++)
     {
-        listaReservas.push(productos[0]);
-    }
-    if(reservas.length==2)
-    {
-        listaReservas.push(productos[0]);
-        listaReservas.push(productos[1]);
+        if(productos[i]===reservas[0])
+        {
+            listaReservas.push(productos[i]);
+        }
     }
     return listaReservas;
 }
