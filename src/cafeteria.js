@@ -1,6 +1,8 @@
-function Reservar(productos)
+function Reservar(productos,reservas)
 {
-    return productos;
+    let listaReservas= [];
+    listaReservas.push(productos[0]);
+    return listaReservas;
 }
 
 function MostrarMenu(productos){
