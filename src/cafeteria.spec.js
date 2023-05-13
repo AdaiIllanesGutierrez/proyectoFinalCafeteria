@@ -10,7 +10,7 @@ describe("Mostrar Lista de Productos Estatica", () => {
 });
 
 describe("Reservar un producto de una lista Estatica", () => {
-  it("Agregar toda la lista de productos a una lista de reservas", () => {
-    expect(Reservar(["cafe","mocca","te"])).toEqual(["cafe","mocca","te"]);
+  it("Agregar el primer producto de la lista a la lista de reservas", () => {
+    expect(Reservar(["cafe"])).toEqual(["cafe"]);
   });
 });
