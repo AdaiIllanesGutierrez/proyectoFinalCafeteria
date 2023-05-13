@@ -1,4 +1,9 @@
+function Reservar(productos)
+{
+    return productos;
+}
+
 function MostrarMenu(productos){
     return productos;
 }
- export default MostrarMenu;
+module.exports = { Reservar, MostrarMenu };
