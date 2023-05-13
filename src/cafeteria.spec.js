@@ -27,4 +27,7 @@ describe("Mostrar Lista de Reservas", () => {
   it("deberia mostrar un producto", () => {
     expect(MostrarListaReservas("cafe")).toEqual("cafe");
   });
+  it("deberia mostrar un producto", () => {
+    expect(MostrarListaReservas(["cafe,mocca,te,sandwich"])).toEqual(["cafe,mocca,te,sandwich"]);
+  });
 });
