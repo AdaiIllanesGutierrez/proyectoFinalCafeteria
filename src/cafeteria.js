@@ -19,13 +19,16 @@ function MostrarListaReservas(reservas){
 function MostrarMenu(productos){
     return productos;
 }
+
+function CrearNombreDeProducto(nombre){
+    return nombre;
+}
+
 function cafeteria(){
     let ListadeReservas=[];
     let ListadeProductos=[];
     ListadeProductos=MostrarMenu(["cafe","mocca","te","sandwich"]);
     listaReservas=Reservar(ListadeProductos,["cafe","te"])
     var res=MostrarListaReservas(listaReservas);
-
-    
 }
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas };
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto};
