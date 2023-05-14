@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto, CrearDescripcionProducto, CrearPrecioProducto} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto, CrearDescripcionProducto, CrearPrecioProducto, CrearCantidadProducto} from "./cafeteria.js";
 
 describe("Mostrar Lista de Productos Estatica", () => {
   it("deberia mostrar un producto", () => {
@@ -43,7 +43,7 @@ describe("Crear un Producto", () => {
   it("deberia devolver el precio de un producto", () => {
     expect(CrearPrecioProducto(3.00)).toEqual(3.00);
   });
-  /*it("deberia devolver la cantidad de un producto", () => {
+  it("deberia devolver la cantidad de un producto", () => {
     expect(CrearCantidadProducto(50)).toEqual(50);
-  });*/
+  });
 });

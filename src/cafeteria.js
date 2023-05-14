@@ -32,6 +32,10 @@ function CrearPrecioProducto(precio){
     return precio;
 }
 
+function CrearCantidadProducto(cantidad){
+    return cantidad;
+}
+
 function cafeteria(){
     let ListadeReservas=[];
     let ListadeProductos=[];
@@ -39,4 +43,4 @@ function cafeteria(){
     listaReservas=Reservar(ListadeProductos,["cafe","te"])
     var res=MostrarListaReservas(listaReservas);
 }
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto, CrearDescripcionProducto, CrearPrecioProducto};
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto, CrearDescripcionProducto, CrearPrecioProducto, CrearCantidadProducto};
