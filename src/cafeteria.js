@@ -1,3 +1,5 @@
+import { Producto } from "./classProducto";
+
 function Reservar(productos,reservas)
 {
     let listaReservas= [];
@@ -20,20 +22,8 @@ function MostrarMenu(productos){
     return productos;
 }
 
-function CrearNombreDeProducto(nombre){
-    return nombre;
-}
-
-function CrearDescripcionProducto(descripcion){
-    return descripcion;
-}
-
-function CrearPrecioProducto(precio){
-    return precio;
-}
-
-function CrearCantidadProducto(cantidad){
-    return cantidad;
+function CrearProducto(nombre, descripcion, precio, cantidad){
+    return new Producto(nombre, descripcion, precio, cantidad);
 }
 
 function cafeteria(){
@@ -43,4 +33,4 @@ function cafeteria(){
     listaReservas=Reservar(ListadeProductos,["cafe","te"])
     var res=MostrarListaReservas(listaReservas);
 }
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto, CrearDescripcionProducto, CrearPrecioProducto, CrearCantidadProducto};
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto};
