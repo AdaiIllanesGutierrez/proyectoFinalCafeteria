@@ -24,6 +24,10 @@ function CrearNombreDeProducto(nombre){
     return nombre;
 }
 
+function CrearDescripcionProducto(descripcion){
+    return descripcion;
+}
+
 function cafeteria(){
     let ListadeReservas=[];
     let ListadeProductos=[];
@@ -31,4 +35,4 @@ function cafeteria(){
     listaReservas=Reservar(ListadeProductos,["cafe","te"])
     var res=MostrarListaReservas(listaReservas);
 }
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto};
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto, CrearDescripcionProducto};

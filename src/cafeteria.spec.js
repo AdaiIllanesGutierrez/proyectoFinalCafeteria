@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto } from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearNombreDeProducto, CrearDescripcionProducto} from "./cafeteria.js";
 
 describe("Mostrar Lista de Productos Estatica", () => {
   it("deberia mostrar un producto", () => {
@@ -37,7 +37,10 @@ describe("Crear un Producto", () => {
   it("deberia devolver el nombre de un producto", () => {
     expect(CrearNombreDeProducto("cafe")).toEqual("cafe");
   });
-  // it("deberia devolver la descripcion de un producto", () => {
-  //   expect(CrearNombreDeProducto("250ml. en un vaso, azucar a gusto del cliente")).toEqual("250ml. en un vaso, azucar a gusto del cliente");
-  // });
+  it("deberia devolver la descripcion de un producto", () => {
+    expect(CrearDescripcionProducto("250ml. en un vaso, azucar a gusto del cliente")).toEqual("250ml. en un vaso, azucar a gusto del cliente");
+  });
+  /*it("deberia devolver la descripcion de un producto", () => {
+    expect(CrearPrecioProducto(3.00)).toEqual(3.00);
+  });*/
 });
