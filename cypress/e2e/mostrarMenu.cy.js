@@ -7,4 +7,9 @@ describe("Mostrar Menu", () => {
       cy.get("#menu-div").should("contain", "cafe","mocca","te");
     });
   });
-  
+  describe("Mostrar Reservas", () => {
+    it("Mostrar Reservas", () => {
+      cy.visit("/");
+      cy.get("#reservas-div").should("contain", "cafe","te");
+    });
+  });
