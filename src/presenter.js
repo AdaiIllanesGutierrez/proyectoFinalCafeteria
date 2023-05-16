@@ -8,8 +8,8 @@ const formAgregarProducto = document.querySelector("#agregarProducto-form");
 const divAgregarProducto = document.querySelector("#agregarProducto-div")
 console.log(productos);
 
-// div2.innerHTML = "<div>" + productos[0] + " <br> " + productos[1]+ " <br> " + productos[2]+"</div>" ;
-// div3.innerHTML="<div>" + reservas[0] + " <br> " + reservas[1]+ " <br> " +"</div>" ;
+ div2.innerHTML = "<div>" + productos[0] + " <br> " + productos[1]+ " <br> " + productos[2]+"</div>" ;
+ div3.innerHTML="<div>" + reservas[0] + " <br> " + reservas[1]+ " <br> " +"</div>" ;
 // form.addEventListener("submit", (event) => {
 //   event.preventDefault();
 //   const Producto = nombreProducto.value;
