@@ -26,11 +26,11 @@ function CrearProducto(nombre, descripcion, precio, cantidad){
     return new Producto(nombre, descripcion, precio, cantidad);
 }
 
-function cafeteria(){
+/*function cafeteria(){
     let ListadeReservas=[];
     let ListadeProductos=[];
     ListadeProductos=MostrarMenu(["cafe","mocca","te","sandwich"]);
     listaReservas=Reservar(ListadeProductos,["cafe","te"])
     var res=MostrarListaReservas(listaReservas);
-}
+}*/
 module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto};

@@ -8,8 +8,8 @@ const formAgregarProducto = document.querySelector("#agregarProducto-form");
 const divAgregarProducto = document.querySelector("#agregarProducto-div")
 console.log(productos);
 
-div2.innerHTML = "<div>" + productos[0] + " <br> " + productos[1]+ " <br> " + productos[2]+"</div>" ;
-div3.innerHTML="<div>" + reservas[0] + " <br> " + reservas[1]+ " <br> " +"</div>" ;
+// div2.innerHTML = "<div>" + productos[0] + " <br> " + productos[1]+ " <br> " + productos[2]+"</div>" ;
+// div3.innerHTML="<div>" + reservas[0] + " <br> " + reservas[1]+ " <br> " +"</div>" ;
 // form.addEventListener("submit", (event) => {
 //   event.preventDefault();
 //   const Producto = nombreProducto.value;
@@ -26,5 +26,5 @@ formAgregarProducto.addEventListener("submit", (event) => {
     console.log(cantidad);
     const producto = CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value);
     
-    divAgregarProducto.innerHTML = "<div>" + producto.nombre + "<br>" + producto.descripcion + "<br>" + producto.precio + "<br>" + producto.cantidad + "</div>";
+    divAgregarProducto.innerHTML = "<div>" +"Nombre: "+ producto.nombre + "<br>" + "descripcion: " +producto.descripcion + "<br>" + "precio: "+ producto.precio + "<br>" + "cantidad: "+producto.cantidad + "</div>";
 });
