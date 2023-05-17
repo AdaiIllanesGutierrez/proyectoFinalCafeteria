@@ -1,4 +1,5 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos} from "./cafeteria.js";
+import { Producto } from "./classProducto.js";
 
 describe("Mostrar Lista de Productos Estatica", () => {
   it("deberia mostrar un producto", () => {
@@ -45,5 +46,8 @@ describe("Crear un Producto", () => {
   });
   it("deberia devolver la cantidad de un producto", () => {
     expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50).cantidad).toEqual(50);
+  });
+  it("deberia devolver verdadero si es igual al nombre entre dos productos", () => {
+    expect(CompararNombresProductos(new Producto("cafe","",1.00, 2), new Producto("cafe","",2.00, 4))).toEqual(true);
   });
 });

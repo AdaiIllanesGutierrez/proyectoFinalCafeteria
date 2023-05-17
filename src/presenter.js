@@ -49,13 +49,20 @@ function eliminarProducto(nombreProducto) {
       `;
     });
     div2.innerHTML = html;
+    const btnsReservar = document.getElementsByClassName("btn_reservar");
     const btnsEliminar = document.getElementsByClassName("btn_eliminar");
     for (let i = 0; i < btnsEliminar.length; i++) {
     btnsEliminar[i].addEventListener("click", function () {
-      eliminarProductoEspecifico(lista[i].nombre);
+      
       alert('se elimino correctamente');
-    });
-  }
+      });
+    }
+    for (let i = 0; i < btnsReservar.length; i++) {
+    btnsEliminar[i].addEventListener("click", function () {
+      elimin(lista[i].nombre);
+      alert('se elimino correctamente');
+      });
+    }
   }
 
   formAgregarProducto.addEventListener("submit", (event) => {

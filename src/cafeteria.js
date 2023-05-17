@@ -1,9 +1,9 @@
 import { Producto } from "./classProducto";
 let listaProductos=[];
+let Reservas = [];
 
-function Reservar(productos,reservas)
+function Reservar(productos,reservas,listaReservas)
 {
-    let listaReservas= [];
     for(var i=0;i<productos.length;i++)
     {
         for(var j=0;j<reservas.length;j++)
@@ -35,7 +35,13 @@ function getListaProductos(){
     return listaProductos;
 }
 
+function getListaProductosReservas(){
+    return Reservas;
+}
 
+function CompararNombresProductos(producto1, producto2){
+    return producto1.nombre == producto2.nombre;
+}
 // function cafeteria(){
 //     let ListadeReservas=[];
 //     let ListadeProductos=[];
@@ -45,4 +51,4 @@ function getListaProductos(){
     
 // }
 
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos};
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos};
