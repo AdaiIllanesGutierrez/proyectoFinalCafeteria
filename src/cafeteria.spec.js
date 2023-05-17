@@ -21,7 +21,7 @@ describe("Reservar un producto de una lista Estatica", () => {
     expect(Reservar(["cafe","mocca"],["mocca"],[])).toEqual(["mocca"]);
   });
   it("deberia buscar los productos de la lista de reservas en la lista de productos y devolver la lista de reservas", () => {
-    expect(Reservar(["cafe","mocca","te","sandwich"],["mocca","sandwich"])).toEqual(["mocca","sandwich"]);
+    expect(Reservar(["cafe","mocca","te","sandwich"],["mocca","sandwich"], [])).toEqual(["mocca","sandwich"]);
   });
 });
 
