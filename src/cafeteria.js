@@ -1,4 +1,5 @@
 import { Producto } from "./classProducto";
+let listaProductos=[];
 
 function Reservar(productos,reservas)
 {
@@ -18,19 +19,30 @@ function Reservar(productos,reservas)
 function MostrarListaReservas(reservas){
     return reservas;
 }
-function MostrarMenu(productos){
-    return productos;
+function MostrarMenu(lista){
+    return lista;
 }
 
 function CrearProducto(nombre, descripcion, precio, cantidad){
     return new Producto(nombre, descripcion, precio, cantidad);
 }
+function InsertarProducto(producto)
+{
+    listaProductos.push(producto);
+}
 
-/*function cafeteria(){
-    let ListadeReservas=[];
-    let ListadeProductos=[];
-    ListadeProductos=MostrarMenu(["cafe","mocca","te","sandwich"]);
-    listaReservas=Reservar(ListadeProductos,["cafe","te"])
-    var res=MostrarListaReservas(listaReservas);
-}*/
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto};
+function getListaProductos(){
+    return listaProductos;
+}
+
+
+// function cafeteria(){
+//     let ListadeReservas=[];
+//     let ListadeProductos=[];
+//     ListadeProductos=MostrarMenu(["cafe","mocca","te","sandwich"]);
+//     listaReservas=Reservar(ListadeProductos,["cafe","te"])
+//     var res=MostrarListaReservas(listaReservas);
+    
+// }
+
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos};
