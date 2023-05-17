@@ -14,6 +14,64 @@ const divAgregarProducto = document.querySelector("#agregarProducto-div");
 
 let lista=[];
 
+function eliminarProducto(nombreProducto) {
+    for (let i = 0; i < lista.length; i++) {
+      if (lista[i].nombre === nombreProducto) {
+        lista.splice(i, 1);
+        console.log("Producto eliminado: " + nombreProducto);
+        return;
+      }
+    }
+    console.log("El producto no existe.");
+  }
+  
+  // Llama a esta función cuando desees eliminar un producto específico
+  function eliminarProductoEspecifico(nombreProducto) {
+    eliminarProducto(nombreProducto);
+    // Vuelve a renderizar la lista actualizada de productos
+    renderizarProductos();
+  }
+  
+  // Renderiza la lista de productos en el div correspondiente
+  function renderizarProductos() {
+    let html = '';
+    lista.forEach(producto => {
+      html += `
+        <div>
+          <h3>Nombre: ${producto.nombre}</h3>
+          <p>Descripción: ${producto.descripcion}</p>
+          <p>Precio: ${producto.precio}</p>
+          <p>Cantidad: ${producto.cantidad}</p>
+          <button class="btn_reservar" onclick="Reservar('${producto.nombre}')">Reservar</button>
+          <button class="btn_editar" onclick="Editar('${producto.nombre}')">Editar</button>
+          <button class="btn_eliminar">Eliminar</button>
+        </div>
+      `;
+    });
+    div2.innerHTML = html;
+    const btnsEliminar = document.getElementsByClassName("btn_eliminar");
+    for (let i = 0; i < btnsEliminar.length; i++) {
+    btnsEliminar[i].addEventListener("click", function () {
+      eliminarProductoEspecifico(lista[i].nombre);
+      alert('se elimino correctamente');
+    });
+  }
+  }
+
+  formAgregarProducto.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const nombre = document.querySelector("#nombre");
+    const descripcion = document.querySelector("#descripcion");
+    const precio = document.querySelector("#precio");
+    const cantidad = document.querySelector("#cantidad");
+  
+    const producto = CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value);
+    InsertarProducto(producto);
+    lista = getListaProductos();
+    console.log(lista);
+    renderizarProductos();
+  });
+  /*
 formAgregarProducto.addEventListener("submit", (event) => {
     event.preventDefault();
     const nombre = document.querySelector("#nombre");
@@ -34,7 +92,7 @@ formAgregarProducto.addEventListener("submit", (event) => {
         <p>Precio: ${producto.precio}</p>
         <p>Cantidad: ${producto.cantidad}</p>
         <button class="btn_reservar" onclick="Reservar('${producto.nombre}')">Reservar</button>
-        <button class="btn_editar" onclick="Editarr('${producto.nombre}')">Editar</button>
+        <button class="btn_editar" onclick="eliminarProducto('${producto.nombre}')">Editar</button>
         </div>
     `;
     });
@@ -44,4 +102,4 @@ div2.innerHTML = html;
     // div2.innerHTML="<div>"+MostrarMenu(lista)+"</div>";
 
     // divAgregarProducto.innerHTML = "<div>" +"Nombre: "+ producto.nombre + "<br>" + "descripcion: " +producto.descripcion + "<br>" + "precio: "+ producto.precio + "<br>" + "cantidad: "+producto.cantidad + "</div>";
-});
+});*/
