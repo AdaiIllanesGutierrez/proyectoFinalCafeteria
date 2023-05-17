@@ -21,4 +21,5 @@ export class Producto{
     get cantidad(){
         return this._cantidad;
     }
+    
 }

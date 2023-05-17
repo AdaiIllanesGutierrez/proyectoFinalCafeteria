@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas} from "./cafeteria.js";
 // import { ListaDeProductos } from "./listaDeProductos.js";
 const div2 = document.querySelector("#menu-div");
 const div3 = document.querySelector("#reservas-div")
@@ -13,6 +13,7 @@ const divAgregarProducto = document.querySelector("#agregarProducto-div");
  //div3.innerHTML="<div>" + reservas[0] + " <br> " + reservas[1]+ " <br> " +"</div>" ;
 
 let lista=[];
+let ListaReservas=[];
 
 function eliminarProducto(nombreProducto) {
     for (let i = 0; i < lista.length; i++) {
@@ -42,7 +43,7 @@ function eliminarProducto(nombreProducto) {
           <p>Descripción: ${producto.descripcion}</p>
           <p>Precio: ${producto.precio}</p>
           <p>Cantidad: ${producto.cantidad}</p>
-          <button class="btn_reservar" onclick="Reservar('${producto.nombre}')">Reservar</button>
+          <button class="btn_reservar">Reservar</button>
           <button class="btn_editar" onclick="Editar('${producto.nombre}')">Editar</button>
           <button class="btn_eliminar">Eliminar</button>
         </div>
@@ -53,14 +54,15 @@ function eliminarProducto(nombreProducto) {
     const btnsEliminar = document.getElementsByClassName("btn_eliminar");
     for (let i = 0; i < btnsEliminar.length; i++) {
     btnsEliminar[i].addEventListener("click", function () {
-      
+      eliminarProductoEspecifico(lista[i].nombre);
       alert('se elimino correctamente');
       });
     }
     for (let i = 0; i < btnsReservar.length; i++) {
-    btnsEliminar[i].addEventListener("click", function () {
-      elimin(lista[i].nombre);
-      alert('se elimino correctamente');
+      btnsReservar[i].addEventListener("click", function () {
+      ListaReservas = Reservar(lista, lista[i])
+      alert('se reservo correctamente');
+      renderizarProductos();
       });
     }
   }
