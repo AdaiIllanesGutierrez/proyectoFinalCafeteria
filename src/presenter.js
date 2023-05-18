@@ -84,6 +84,11 @@ let ListaReservas=[];
     const cantidad = document.querySelector("#cantidad");
   
     const producto = CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value);
+    if (nombre.value === '' || descripcion.value === '' || precio.value === '' || cantidad.value === '') {
+      // Mostrar el alert indicando que todos los campos deben estar llenos
+      alert('Todos los campos deben estar llenos');
+      return; // Detener la ejecución si los campos están vacíos
+    }
     InsertarProducto(producto);
     lista = getListaProductos();
     renderizarProductos();
