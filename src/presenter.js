@@ -40,7 +40,7 @@ let ListaReservas=[];
           <p>Descripción: ${producto.descripcion}</p>
           <p>Precio: ${producto.precio}</p>
           <p>Cantidad: ${producto.cantidad}</p>
-          <button class="btn_eliminar">Eliminar</button>
+          <!-- <button class="btn_eliminar">Eliminar</button> -->
         </div>
       `;
     });
