@@ -1,7 +1,7 @@
 import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas} from "./cafeteria.js";
 // import { ListaDeProductos } from "./listaDeProductos.js";
 const div2 = document.querySelector("#menu-div");
-const div3 = document.querySelector("#reservas-div")
+const div3 = document.querySelector("#reservas-div");
 // const reservas=MostrarListaReservas(["cafe","te"])
 // const productos= MostrarMenu(["cafe","mocca","te"]);
 
@@ -19,7 +19,6 @@ function eliminarProducto(nombreProducto) {
     for (let i = 0; i < lista.length; i++) {
       if (lista[i].nombre === nombreProducto) {
         lista.splice(i, 1);
-        console.log("Producto eliminado: " + nombreProducto);
         return;
       }
     }
@@ -36,6 +35,7 @@ function eliminarProducto(nombreProducto) {
   // Renderiza la lista de productos en el div correspondiente
   function renderizarProductos() {
     let html = '';
+    let htmlReservas = '';
     lista.forEach(producto => {
       html += `
         <div>
@@ -49,7 +49,19 @@ function eliminarProducto(nombreProducto) {
         </div>
       `;
     });
+    ListaReservas.forEach(producto => {
+      htmlReservas += `
+        <div>
+          <h3>Nombre: ${producto.nombre}</h3>
+          <p>Descripción: ${producto.descripcion}</p>
+          <p>Precio: ${producto.precio}</p>
+          <p>Cantidad: ${producto.cantidad}</p>
+          <button class="btn_eliminar">Eliminar</button>
+        </div>
+      `;
+    });
     div2.innerHTML = html;
+    div3.innerHTML = htmlReservas;
     const btnsReservar = document.getElementsByClassName("btn_reservar");
     const btnsEliminar = document.getElementsByClassName("btn_eliminar");
     for (let i = 0; i < btnsEliminar.length; i++) {
@@ -60,7 +72,8 @@ function eliminarProducto(nombreProducto) {
     }
     for (let i = 0; i < btnsReservar.length; i++) {
       btnsReservar[i].addEventListener("click", function () {
-      ListaReservas = Reservar(lista, lista[i])
+      ListaReservas = getListaProductosReservas();
+      ListaReservas = Reservar(lista, [lista[i]], ListaReservas);
       alert('se reservo correctamente');
       renderizarProductos();
       });
@@ -77,7 +90,7 @@ function eliminarProducto(nombreProducto) {
     const producto = CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value);
     InsertarProducto(producto);
     lista = getListaProductos();
-    console.log(lista);
+    //console.log(lista);
     renderizarProductos();
   });
  

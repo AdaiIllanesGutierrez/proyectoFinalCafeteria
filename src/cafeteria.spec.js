@@ -50,4 +50,7 @@ describe("Crear un Producto", () => {
   it("deberia devolver verdadero si es igual al nombre entre dos productos", () => {
     expect(CompararNombresProductos(new Producto("cafe","",1.00, 2), new Producto("cafe","",2.00, 4))).toEqual(true);
   });
+  it("deberia devolver verdadero si es igual al nombre entre dos productos", () => {
+    expect(CompararNombresProductos("cafe", "cafe")).toEqual(true);
+  });
 });

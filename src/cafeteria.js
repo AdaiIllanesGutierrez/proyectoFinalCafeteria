@@ -4,13 +4,15 @@ let Reservas = [];
 
 function Reservar(productos,reservas,listaReservas)
 {
+    console.log(reservas);
     for(var i=0;i<productos.length;i++)
     {
         for(var j=0;j<reservas.length;j++)
         {
-            if(productos[i]===reservas[j])
+            if(CompararNombresProductos(productos[i],reservas[j]))
             {
                 listaReservas.push(productos[i])
+                return listaReservas;
             }
         }
     }
