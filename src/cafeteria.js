@@ -4,20 +4,19 @@ let Reservas = [];
 
 function Reservar(productos,reservas,listaReservas)
 {
-    console.log(reservas);
     for(var i=0;i<productos.length;i++)
     {
         for(var j=0;j<reservas.length;j++)
         {
             if(CompararNombresProductos(productos[i],reservas[j]))
             {
-                listaReservas.push(productos[i])
-                return listaReservas;
+                listaReservas.push(productos[i]);
             }
         }
     }
     return listaReservas;
 }
+
 function MostrarListaReservas(reservas){
     return reservas;
 }
@@ -42,7 +41,13 @@ function getListaProductosReservas(){
 }
 
 function CompararNombresProductos(producto1, producto2){
-    return producto1.nombre == producto2.nombre;
+    if(typeof(producto1) == "string" && typeof(producto2) == "string"){
+        return producto1 == producto2;    
+    }
+    else if(typeof(producto1) == "object" && typeof(producto2) == "object"){
+        return producto1.nombre == producto2.nombre;
+    }
+    
 }
 // function cafeteria(){
 //     let ListadeReservas=[];
