@@ -1,4 +1,5 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,eliminarProducto} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto} from "./cafeteria.js";
+import { Producto } from "./classProducto.js";
 
 const div2 = document.querySelector("#menu-div");
 const div3 = document.querySelector("#reservas-div");
@@ -10,25 +11,12 @@ const divAgregarProducto = document.querySelector("#agregarProducto-div");
 let lista=[];
 let ListaReservas=[];
 
-  function editarProductoEspecifico(producto,nuevoValor){
-    producto.textContent=nuevoValor;
-  }
-  
   function eliminarProductoEspecifico(nombreProducto) {
     eliminarProducto(nombreProducto,lista);
     
     renderizarProductos();
   }
-  function editarProducto(nombreProducto) {
-    
-    for (let i = 0; i < lista.length; i++) {
-      if (lista[i].nombre === nombreProducto) {
-        renderizarProductos();
-        return;
-      }
-    }
-  }
-  
+
   function renderizarProductos() {
     let html = '';
     let htmlReservas = '';
@@ -81,11 +69,8 @@ let ListaReservas=[];
         const nuevaDescripcion = prompt('Ingrese la nueva descripción del producto');
         const nuevoPrecio = parseFloat(prompt('Ingrese el nuevo precio del producto'));
         const nuevaCantidad = parseInt(prompt('Ingrese la nueva cantidad del producto'));
-        lista[i].nombre = nuevoNombre;
-        lista[i].descripcion = nuevaDescripcion;
-        lista[i].precio = nuevoPrecio;
-        lista[i].cantidad = nuevaCantidad;
-
+        const productoeditado = new Producto(nuevoNombre,nuevaDescripcion,nuevoPrecio,nuevaCantidad);
+        lista[i]=productoeditado;  
         renderizarProductos();
     });
     }

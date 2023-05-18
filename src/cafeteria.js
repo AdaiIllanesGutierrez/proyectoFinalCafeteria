@@ -60,13 +60,4 @@ function eliminarProducto(nombreProducto,listaProductos) {
 function editarProducto(producto1, producto2){
     return producto2;
 }
-// function cafeteria(){
-//     let ListadeReservas=[];
-//     let ListadeProductos=[];
-//     ListadeProductos=MostrarMenu(["cafe","mocca","te","sandwich"]);
-//     listaReservas=Reservar(ListadeProductos,["cafe","te"])
-//     var res=MostrarListaReservas(listaReservas);
-    
-// }
-
 module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos,editarProducto,eliminarProducto};

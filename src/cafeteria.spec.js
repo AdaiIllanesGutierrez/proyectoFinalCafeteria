@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos,eliminarProducto,editarProducto} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos,eliminarProducto,editarProducto,getListaProductos,getListaProductosReservas} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
 
 
@@ -71,4 +71,14 @@ describe("Editar Producto", () => {
     expect(editarProducto(new Producto("","", 0,0), new Producto("caffe", "", 0,0).nombre)).toEqual("caffe");
   });
 });
+describe("Listas globales", () => {
+  it("Deberia almacenar en la lista de menu global", () => {
+    expect(getListaProductos()).toEqual([]);
+  });
+  it("Deberia almacenar en la lista de menu global", () => {
+    expect(getListaProductosReservas()).toEqual([]);
+  });
+});
+
+
 
