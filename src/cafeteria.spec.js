@@ -1,5 +1,6 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos,eliminarProducto,editarProducto} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
+
 
 describe("Mostrar Lista de Productos Estatica", () => {
   it("deberia mostrar un producto", () => {
@@ -54,3 +55,20 @@ describe("Crear un Producto", () => {
     expect(CompararNombresProductos("cafe", "cafe")).toEqual(true);
   });
 });
+describe("eliminar Un producto", () => {
+  it("elimina un producto por el nombre", () => {
+    const listaProductos = [
+      { nombre: 'caffe' },
+      { nombre: 'te' },
+      { nombre: 'almuerzo' },
+    ];
+    expect(eliminarProducto('te',listaProductos)).toEqual([{ nombre: 'caffe' },{ nombre: 'almuerzo' },
+    ]);
+  });
+});
+describe("Editar Producto", () => {
+  it("deberia editar el nombre de un producto", () => {
+    expect(editarProducto(new Producto("","", 0,0), new Producto("caffe", "", 0,0).nombre)).toEqual("caffe");
+  });
+});
+

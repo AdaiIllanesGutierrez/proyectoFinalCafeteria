@@ -49,6 +49,17 @@ function CompararNombresProductos(producto1, producto2){
     }
     
 }
+function eliminarProducto(nombreProducto,listaProductos) {
+    for (let i = 0; i < listaProductos.length; i++) {
+      if (listaProductos[i].nombre === nombreProducto) {
+        listaProductos.splice(i, 1);
+        return listaProductos;
+      }
+    }
+}
+function editarProducto(producto1, producto2){
+    return producto2;
+}
 // function cafeteria(){
 //     let ListadeReservas=[];
 //     let ListadeProductos=[];
@@ -58,4 +69,4 @@ function CompararNombresProductos(producto1, producto2){
     
 // }
 
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos};
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos,editarProducto,eliminarProducto};
