@@ -80,5 +80,14 @@ describe("Listas globales", () => {
   });
 });
 
-
+describe("Actualizar el inventario", () => {
+  let producto;
+  beforeEach(() => {
+    producto = new Producto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50);
+  });
+  it("Deberia cambiar la cantidad de un solo producto", () => {
+    producto.cantidad = 49;
+    expect(producto.cantidad).toEqual(49);
+  });
+});
 

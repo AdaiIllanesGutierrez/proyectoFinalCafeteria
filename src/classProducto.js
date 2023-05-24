@@ -21,5 +21,8 @@ export class Producto{
     get cantidad(){
         return this._cantidad;
     }
-
+    
+    set cantidad(cantidad){
+        this._cantidad = cantidad;
+    }
 }
