@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto, ActualizarMenuCantidadProductoXReserva} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto, ActualizarMenuCantidadProductoXReserva,ActualizarMenuCantidadProductoXReservaEliminado} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
 
 const div2 = document.querySelector("#menu-div");
@@ -11,11 +11,11 @@ const divAgregarProducto = document.querySelector("#agregarProducto-div");
 let lista=[];
 let ListaReservas=[];
 
-  /*function eliminarProductoEspecifico(nombreProducto) {
+  function eliminarProductoEspecifico(nombreProducto) {
     eliminarProducto(nombreProducto,lista);
     
     renderizarProductos();
-  }*/
+  }
 
   function renderizarProductos() {
     let html = '';
@@ -51,9 +51,8 @@ let ListaReservas=[];
     const btnsEliminarReserva = document.getElementsByClassName("btn_eliminarReserva");
     for (let i = 0; i < btnsEliminar.length; i++) {
     btnsEliminar[i].addEventListener("click", function () {
-      lista = eliminarProducto(lista[i].nombre,lista);
+      eliminarProductoEspecifico(lista[i].nombre);
       alert('se elimino correctamente');
-      renderizarProductos();
       });
     }
     for (let i = 0; i < btnsReservar.length; i++) {
@@ -68,8 +67,9 @@ let ListaReservas=[];
     }
     for (let i = 0; i <  btnsEliminarReserva.length; i++) {
       btnsEliminarReserva[i].addEventListener("click", function () {
+      let pos = lista.indexOf(ListaReservas[i].nombre);
       ListaReservas = eliminarProducto(ListaReservas[i].nombre,ListaReservas);
-      lista = ActualizarMenuCantidadProductoXRerva(lista, i, 1);
+      //lista = ActualizarMenuCantidadProductoXReservaEliminado(lista, pos, 1);
       alert('se elimino la reserva reservo correctamente');
       renderizarProductos();
       });
