@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto,  ActualizarMenuCantidadProducto} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
 
 const div2 = document.querySelector("#menu-div");
@@ -58,6 +58,8 @@ let ListaReservas=[];
       btnsReservar[i].addEventListener("click", function () {
       ListaReservas = getListaProductosReservas();
       ListaReservas = Reservar(lista, [lista[i]], ListaReservas);
+      //ListaReservas[ListaReservas.length - 1].cantidad = 1; 
+      lista =  ActualizarMenuCantidadProducto(lista, i, 1);
       alert('se reservo correctamente');
       renderizarProductos();
       });
