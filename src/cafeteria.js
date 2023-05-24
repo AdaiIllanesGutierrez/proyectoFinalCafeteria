@@ -2,6 +2,11 @@ import { Producto } from "./classProducto";
 let listaProductos=[];
 let Reservas = [];
 
+function ActualizarMenuCantidadProducto(listaMenu, posicion, cantidad){
+    listaMenu[posicion].cantidad = listaMenu[posicion].cantidad - cantidad;
+    return listaMenu;
+}
+
 function Reservar(productos,reservas,listaReservas)
 {
     for(var i=0;i<productos.length;i++)
@@ -60,4 +65,5 @@ function eliminarProducto(nombreProducto,listaProductos) {
 function editarProducto(producto1, producto2){
     return producto2;
 }
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos,editarProducto,eliminarProducto};
+
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos,editarProducto,eliminarProducto,  ActualizarMenuCantidadProducto};
