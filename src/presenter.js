@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto,  ActualizarMenuCantidadProducto} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto, ActualizarMenuCantidadProductoXReserva} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
 
 const div2 = document.querySelector("#menu-div");
@@ -11,11 +11,11 @@ const divAgregarProducto = document.querySelector("#agregarProducto-div");
 let lista=[];
 let ListaReservas=[];
 
-  function eliminarProductoEspecifico(nombreProducto) {
+  /*function eliminarProductoEspecifico(nombreProducto) {
     eliminarProducto(nombreProducto,lista);
     
     renderizarProductos();
-  }
+  }*/
 
   function renderizarProductos() {
     let html = '';
@@ -40,7 +40,7 @@ let ListaReservas=[];
           <p>Descripción: ${producto.descripcion}</p>
           <p>Precio: ${producto.precio}</p>
           <p>Cantidad: ${producto.cantidad}</p>
-          <!-- <button class="btn_eliminar">Eliminar</button> -->
+          <button class="btn_eliminarReserva">Eliminar</button>
         </div>
       `;
     });
@@ -48,10 +48,12 @@ let ListaReservas=[];
     div3.innerHTML = htmlReservas;
     const btnsReservar = document.getElementsByClassName("btn_reservar");
     const btnsEliminar = document.getElementsByClassName("btn_eliminar");
+    const btnsEliminarReserva = document.getElementsByClassName("btn_eliminarReserva");
     for (let i = 0; i < btnsEliminar.length; i++) {
     btnsEliminar[i].addEventListener("click", function () {
-      eliminarProductoEspecifico(lista[i].nombre);
+      lista = eliminarProducto(lista[i].nombre,lista);
       alert('se elimino correctamente');
+      renderizarProductos();
       });
     }
     for (let i = 0; i < btnsReservar.length; i++) {
@@ -59,8 +61,16 @@ let ListaReservas=[];
       ListaReservas = getListaProductosReservas();
       ListaReservas = Reservar(lista, [lista[i]], ListaReservas);
       //ListaReservas[ListaReservas.length - 1].cantidad = 1; 
-      lista =  ActualizarMenuCantidadProducto(lista, i, 1);
+      lista = ActualizarMenuCantidadProductoXReserva(lista, i, 1);
       alert('se reservo correctamente');
+      renderizarProductos();
+      });
+    }
+    for (let i = 0; i <  btnsEliminarReserva.length; i++) {
+      btnsEliminarReserva[i].addEventListener("click", function () {
+      ListaReservas = eliminarProducto(ListaReservas[i].nombre,ListaReservas);
+      lista = ActualizarMenuCantidadProductoXRerva(lista, i, 1);
+      alert('se elimino la reserva reservo correctamente');
       renderizarProductos();
       });
     }

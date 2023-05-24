@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos,eliminarProducto,editarProducto,getListaProductos,getListaProductosReservas,  ActualizarMenuCantidadProducto} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos,eliminarProducto,editarProducto,getListaProductos,getListaProductosReservas, ActualizarMenuCantidadProductoXReserva, ActualizarMenuCantidadProductoXReservaEliminado} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
 
 
@@ -89,8 +89,11 @@ describe("Actualizar el inventario", () => {
     producto.cantidad = 49;
     expect(producto.cantidad).toEqual(49);
   });
-  it("Deberia cambiar la cantidad de un solo producto", () => {
-    expect(ActualizarMenuCantidadProducto([new Producto("caffe","cafe en vaso",5,10)], 0, 1)).toEqual([new Producto("caffe","cafe en vaso",5,9)]);
+  it("Deberia restar la cantidad de un solo producto", () => {
+    expect(ActualizarMenuCantidadProductoXReserva([new Producto("caffe","cafe en vaso",5,10)], 0, 1)).toEqual([new Producto("caffe","cafe en vaso",5,9)]);
+  });
+  it("Deberia sumar la cantidad de un solo producto", () => {
+    expect(ActualizarMenuCantidadProductoXReservaEliminado([new Producto("caffe","cafe en vaso",5,10)], 0, 1)).toEqual([new Producto("caffe","cafe en vaso",5,11)]);
   });
 });
 
