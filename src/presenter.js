@@ -20,15 +20,19 @@ formAgregarProducto.addEventListener("submit", (event) => {
       alert('Todos los campos deben estar llenos');
       return; 
     }
+    // localStorage.setItem("myCat", "Tom");
+    
     InsertarProducto(producto);
     lista = getListaProductos();
+    
     renderizarProductos();
 });
 
 function renderizarProductos() {
     let html = '';
     let htmlReservas = '';
-      
+    localStorage.setItem('productos',JSON.stringify(lista));
+    //JSON.parse(localStorage.getItem('productos'));
     lista.forEach(producto => {
         html += `
           <div>
