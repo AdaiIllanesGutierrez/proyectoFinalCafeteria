@@ -59,7 +59,7 @@ let ListaReservas=[];
       btnsReservar[i].addEventListener("click", function () {
       ListaReservas = getListaProductosReservas();
       ListaReservas = Reservar(lista, [lista[i]], ListaReservas);
-      //ListaReservas[ListaReservas.length - 1].cantidad = 1; 
+      ListaReservas[ListaReservas.length - 1].cantidad = 1; 
       lista = ActualizarMenuCantidadProductoXReserva(lista, i, 1);
       alert('se reservo correctamente');
       renderizarProductos();

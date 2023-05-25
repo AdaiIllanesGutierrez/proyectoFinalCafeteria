@@ -20,7 +20,14 @@ function Reservar(productos,reservas,listaReservas)
         {
             if(CompararNombresProductos(productos[i],reservas[j]))
             {
-                listaReservas.push(productos[i]);
+                if(typeof(productos[i]) == "object"){
+                    let nuevo = new Producto(productos[i].nombre, productos[i].descripcion,productos[i].precio,productos[i].cantidad);
+                    listaReservas.push(nuevo);
+                }
+                else{
+                    listaReservas.push(productos[i]);
+                }
+                
             }
         }
     }
