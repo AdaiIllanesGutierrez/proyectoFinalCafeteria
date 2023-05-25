@@ -75,6 +75,7 @@ function eliminarProducto(nombreProducto,listaProductos) {
     }
 }
 
+
 function editarProducto(producto1, producto2){
     return producto2;
 }
