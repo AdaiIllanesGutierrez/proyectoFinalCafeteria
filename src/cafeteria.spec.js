@@ -102,4 +102,9 @@ describe("Ver Los Productos Disponibles Del Menu", () => {
     let producto=new Producto("cafe","en grano",5,5);
     expect(producto.disponible).toEqual(true);
   });
+  it("Si un producto tiene cantidad 0 deberia establecerse el atributo disponible en false", () => {
+    let producto=new Producto("cafe","en grano",5,0);
+    producto.ActualizarDisponibilidad();
+    expect(producto.disponible).toEqual(false);
+  });
 });
