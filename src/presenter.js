@@ -23,14 +23,14 @@ formAgregarProducto.addEventListener("submit", (event) => {
     // localStorage.setItem("myCat", "Tom");
     
     InsertarProducto(producto);
-    lista = getListaProductos();
-    
+    // lista = getListaProductos();
     renderizarProductos();
 });
 
 function renderizarProductos() {
     let html = '';
     let htmlReservas = '';
+    lista=getListaProductos();
     localStorage.setItem('productos',JSON.stringify(lista));
     //JSON.parse(localStorage.getItem('productos'));
     lista.forEach(producto => {
@@ -78,6 +78,7 @@ function renderizarProductos() {
         ListaReservas[ListaReservas.length - 1].cantidad = 1; 
         lista = ActualizarMenuCantidadProductoXReserva(lista, i, 1);
         alert('se reservo correctamente');
+        // lista=getListaProductos();
         renderizarProductos();
         });
       }

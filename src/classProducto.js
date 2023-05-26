@@ -35,7 +35,7 @@ export class Producto{
 
     ActualizarDisponibilidad()
     {
-        if(this._cantidad===0)
+        if(this._cantidad<=0)
         {
             this._disponible=false;
         }
