@@ -28,7 +28,7 @@ formAgregarProducto.addEventListener("submit", (event) => {
 });
 
 function renderizarProductos() {
-    let html = '';
+    let html = '<h1>MENÚ CAFETERIA CATO</h1>';
     let htmlReservas = '';
     lista=getListaProductos();
     localStorage.setItem('productos',JSON.stringify(lista));
