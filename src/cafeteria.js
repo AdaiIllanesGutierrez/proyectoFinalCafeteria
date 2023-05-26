@@ -59,6 +59,7 @@ function InsertarProducto(producto)
 }
 
 function getListaProductos(){
+    listaProductos=MostrarMenu(listaProductos);
     return listaProductos;
 }
 
