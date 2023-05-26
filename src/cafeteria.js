@@ -37,7 +37,16 @@ function Reservar(productos,reservas,listaReservas)
 function MostrarListaReservas(reservas){
     return reservas;
 }
-function MostrarMenu(lista){
+function MostrarMenu(lista)
+{
+    for(var i=0;i<lista.length;i++)
+    {
+        lista[i].ActualizarDisponibilidad();
+        if(lista[i].disponible===false)
+        {
+            lista.splice(i,1);
+        }
+    }
     return lista;
 }
 

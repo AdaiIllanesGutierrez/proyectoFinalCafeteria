@@ -4,10 +4,10 @@ import { Producto } from "./classProducto.js";
 
 describe("Mostrar Lista de Productos Estatica", () => {
   it("deberia mostrar un producto", () => {
-    expect(MostrarMenu("cafe")).toEqual("cafe");
+    expect(MostrarMenu([new Producto("cafe","en grano",5,10)])).toEqual([new Producto("cafe","en grano",5,10)]);
   });
   it("deberia mostrar  una lista  de productos", () => {
-    expect(MostrarMenu(["cafe","mocca","te"])).toEqual(["cafe","mocca","te"]);
+    expect(MostrarMenu([new Producto("cafe","en grano",5,10),new Producto("te","en sobre",4,10),new Producto("mate","en sobre",3,15)])).toEqual([new Producto("cafe","en grano",5,10),new Producto("te","en sobre",4,10),new Producto("mate","en sobre",3,15)]);
   });
 });
 
@@ -106,5 +106,8 @@ describe("Ver Los Productos Disponibles Del Menu", () => {
     let producto=new Producto("cafe","en grano",5,0);
     producto.ActualizarDisponibilidad();
     expect(producto.disponible).toEqual(false);
+  });
+  it("Los Productos del Menu que tengan cantidad en 0 no deberian mostrarse", () => {
+    expect(MostrarMenu([new Producto("cafe","en grano",10,10),new Producto("te","en sobre",10,0),new Producto("mate","en sobre",10,15)])).toEqual([new Producto("cafe","en grano",10,10),new Producto("mate","en sobre",10,15)]);
   });
 });
