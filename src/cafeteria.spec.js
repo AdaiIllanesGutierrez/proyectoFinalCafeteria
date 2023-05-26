@@ -97,3 +97,9 @@ describe("Actualizar el inventario", () => {
   });
 });
 
+describe("Ver Los Productos Disponibles Del Menu", () => {
+  it("Cada producto creado debe iniciar con el atributo disponible en true por defecto", () => {
+    let producto=new Producto("cafe","en grano",5,5);
+    expect(producto.disponible).toEqual(true);
+  });
+});

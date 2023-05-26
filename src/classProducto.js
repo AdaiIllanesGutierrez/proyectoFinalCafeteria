@@ -4,6 +4,7 @@ export class Producto{
         this._descripcion = descripcion;
         this._precio = precio;
         this._cantidad = cantidad;
+        this._disponible = true;
     }
 
     get nombre(){
@@ -22,7 +23,21 @@ export class Producto{
         return this._cantidad;
     }
     
+    get disponible()
+    {
+        return this._disponible;
+    }
+
     set cantidad(cantidad){
         this._cantidad = cantidad;
     }
+
+
+    // ActualizarDisponibilidad()
+    // {
+    //     if(this._cantidad===0)
+    //     {
+    //         this._disponible=false;
+    //     }
+    // }
 }
