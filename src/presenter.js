@@ -5,8 +5,25 @@ const div2 = document.querySelector("#menu-div");
 const div3 = document.querySelector("#reservas-div");
 const formAgregarProducto = document.querySelector("#agregarProducto-form");
 
+const adminButton = document.getElementById("adminButton");
+const adminDiv = document.getElementById("admin");
+const cliButton = document.getElementById("clienteButton");
+const clienteDiv = document.getElementById("cliente");
 let lista=[];
 let ListaReservas=[];
+
+adminDiv.style.display = "none";
+
+
+adminButton.addEventListener("click", function() {
+  adminDiv.style.display = "block";
+  clienteDiv.style.display = "none";
+});
+cliButton.addEventListener("click", function() {
+  adminDiv.style.display = "none";
+  clienteDiv.style.display ="block";
+});
+
 
 formAgregarProducto.addEventListener("submit", (event) => {
     event.preventDefault();
