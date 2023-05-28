@@ -1,18 +1,4 @@
-/*describe("Mostrar Menu", () => {
-    it("Shows the menu", () => {
-      cy.visit("/");
-    //   cy.get("#primer-numero").type(4);
-    //   cy.get("#segundo-numero").type(5);
-    //   cy.get("#sumar-button").click();
-      cy.get("#menu-div").should("contain", "cafe","mocca","te");
-    });
-  });
-  describe("Mostrar Reservas", () => {
-    it("Mostrar Reservas", () => {
-      cy.visit("/");
-      cy.get("#reservas-div").should("contain", "cafe","te");
-    });
-  });*/
+
   describe("Prueba de visualización de productos", () => {
     it("Verifica que los productos se muestren correctamente", () => {
       // Ingresa a la página que muestra los productos
@@ -64,5 +50,18 @@
         cy.contains("Cantidad: " + producto.cantidad);
       });
     });
+  });
+
+  describe("Pruebas de visualización y funcionalidad", () => {
+    beforeEach(() => {
+      cy.visit("/");
+    });
+  
+    it("Debe mostrar el div 'admin' y ocultar el menú al hacer clic en 'admin'", () => {
+      cy.get("#adminButton").click();
+      cy.get("#admin").should("be.visible");
+      cy.get("#menu-div").should("not.be.visible");
+    });
+  
   });
   

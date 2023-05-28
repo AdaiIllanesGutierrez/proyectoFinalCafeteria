@@ -22,7 +22,13 @@
           <label for="precio">Precio:</label>
           <input type="text" id="precio" />
           <label for="cantidad">Cantidad:</label>
-          <input type="number" id="cantidad" />
+          <input type="number" id="cantidad" value="0" min="0"/>
+          <label for="categoria">Categoría:</label>
+          <select id="categoria">
+          <option value="cafe">Cafes</option>
+          <option value="almuerzo">Almuerzo</option>
+          <option value="refrigerios">Refrigerio</option>
+        </select>
           <input type="submit" value="Agregar" id="agregar-button" />
         </form>
         
