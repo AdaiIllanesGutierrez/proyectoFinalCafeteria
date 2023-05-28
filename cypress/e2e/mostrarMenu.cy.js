@@ -62,6 +62,11 @@
       cy.get("#admin").should("be.visible");
       cy.get("#menu-div").should("not.be.visible");
     });
-  
+
+    it("Debe ocultar el div 'admin' y mostrar el menú al hacer clic en 'cliente'", () => {
+      cy.get("#clienteButton").click();
+      cy.get("#admin").should("not.be.visible");
+    });
+    
   });
   
