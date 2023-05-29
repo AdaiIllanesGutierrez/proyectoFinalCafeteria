@@ -61,6 +61,10 @@ function MostrarPorCategoria(categoria,lista)
         {
             listaCat.push(lista[i]);
         }
+        if(categoria==="todos")
+        {
+            listaCat.push(lista[i]);
+        }
     }
     return listaCat;
 }
