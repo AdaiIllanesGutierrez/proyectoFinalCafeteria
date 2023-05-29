@@ -120,5 +120,8 @@ describe("Mostrar Productos por Categoria", () => {
     let producto=new Producto("cafe","en grano",5,5,"cafes");
     expect(producto.categoria).toEqual("cafes");
   });
-  
+  it("Muestra productos de una categoria", () => {
+    let listaproductos=[new Producto("cafe","en grano",5,5,"cafes"),new Producto("mate","manzanilla",15,2,"mates"),new Producto("mocca","con cafe amargo",4,3,"cafes")];
+    expect(MostrarPorCategoria("cafes",listaproductos)).toEqual([new Producto("cafe","en grano",5,5,"cafes"),new Producto("mocca","con cafe amargo",4,3,"cafes")]);
+  });
 });
