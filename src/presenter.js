@@ -30,8 +30,9 @@ formAgregarProducto.addEventListener("submit", (event) => {
     const descripcion = document.querySelector("#descripcion");
     const precio = document.querySelector("#precio");
     const cantidad = document.querySelector("#cantidad");
-  
-    const producto = CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value);
+    const categoria = document.querySelector("#categoria");
+
+    const producto = CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value,categoria.value);
     if (nombre.value === '' || descripcion.value === '' || precio.value === '' || cantidad.value === '') {
       alert('Todos los campos deben estar llenos');
       return; 
@@ -45,7 +46,8 @@ formAgregarProducto.addEventListener("submit", (event) => {
 
 function renderizarProductos() {
     let html = '<h1>MENÚ CAFETERIA CATO</h1>';
-    let htmlReservas = '';
+
+    let htmlReservas = '<h1>Mis RESERVAS</h1>';
     lista=getListaProductos();
     localStorage.setItem('productos',JSON.stringify(lista));
     //JSON.parse(localStorage.getItem('productos'));
@@ -56,6 +58,7 @@ function renderizarProductos() {
             <p>Descripción: ${producto.descripcion}</p>
             <p>Precio: ${producto.precio}</p>
             <p>Cantidad: ${producto.cantidad}</p>
+            <p>Categoria: ${producto.categoria}</p>
             <button class="btn_reservar">Reservar</button>
             <button class="btn_editar">Editar</button>
             <button class="btn_eliminar">Eliminar</button>
@@ -70,6 +73,7 @@ function renderizarProductos() {
             <p>Descripción: ${producto.descripcion}</p>
             <p>Precio: ${producto.precio}</p>
             <p>Cantidad: ${producto.cantidad}</p>
+            <p>Categoria: ${producto.categoria}</p>
             <button class="btn_eliminarReserva">Eliminar</button>
             <button class="btn_confirmarReserva">Confirmar</button>
           </div>

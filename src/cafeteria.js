@@ -37,6 +37,7 @@ function Reservar(productos,reservas,listaReservas)
 function MostrarListaReservas(reservas){
     return reservas;
 }
+
 function MostrarMenu(lista)
 {
     for(var i=0;i<lista.length;i++)
@@ -49,6 +50,21 @@ function MostrarMenu(lista)
     }
     return lista;
 }
+
+function MostrarPorCategoria(categoria,lista)
+{
+    let listaCat=[];
+
+    for(var i=0;i<lista.length;i++)
+    {
+        if(lista[i].categoria===categoria)
+        {
+            listaCat.push(lista[i]);
+        }
+    }
+    return listaCat;
+}
+
 
 function CrearProducto(nombre, descripcion, precio, cantidad,categoria){
     return new Producto(nombre, descripcion, precio, cantidad,categoria);
@@ -90,4 +106,4 @@ function editarProducto(producto1, producto2){
     return producto2;
 }
 
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos,editarProducto,eliminarProducto,ActualizarMenuCantidadProductoXReserva,ActualizarMenuCantidadProductoXReservaEliminado};
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos,editarProducto,eliminarProducto,ActualizarMenuCantidadProductoXReserva,ActualizarMenuCantidadProductoXReservaEliminado,MostrarPorCategoria};

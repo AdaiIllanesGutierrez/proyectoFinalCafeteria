@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos,eliminarProducto,editarProducto,getListaProductos,getListaProductosReservas, ActualizarMenuCantidadProductoXReserva, ActualizarMenuCantidadProductoXReservaEliminado} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos,eliminarProducto,editarProducto,getListaProductos,getListaProductosReservas, ActualizarMenuCantidadProductoXReserva, ActualizarMenuCantidadProductoXReservaEliminado,MostrarPorCategoria} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
 
 
@@ -102,15 +102,23 @@ describe("Actualizar el inventario", () => {
 
 describe("Ver Los Productos Disponibles Del Menu", () => {
   it("Cada producto creado debe iniciar con el atributo disponible en true por defecto", () => {
-    let producto=new Producto("cafe","en grano",5,5);
+    let producto=new Producto("cafe","en grano",5,5,"cafes");
     expect(producto.disponible).toEqual(true);
   });
   it("Si un producto tiene cantidad 0 deberia establecerse el atributo disponible en false", () => {
-    let producto=new Producto("cafe","en grano",5,0);
+    let producto=new Producto("cafe","en grano",5,0,"cafes");
     producto.ActualizarDisponibilidad();
     expect(producto.disponible).toEqual(false);
   });
   it("Los Productos del Menu que tengan cantidad en 0 no deberian mostrarse", () => {
-    expect(MostrarMenu([new Producto("cafe","en grano",10,10),new Producto("te","en sobre",10,0),new Producto("mate","en sobre",10,15)])).toEqual([new Producto("cafe","en grano",10,10),new Producto("mate","en sobre",10,15)]);
+    expect(MostrarMenu([new Producto("cafe","en grano",10,10,"cafes"),new Producto("te","en sobre",10,0,"te's"),new Producto("mate","en sobre",10,15,"mates")])).toEqual([new Producto("cafe","en grano",10,10,"cafes"),new Producto("mate","en sobre",10,15,"mates")]);
   });
+});
+
+describe("Mostrar Productos por Categoria", () => {
+  it("Muestra la categoria de un producto", () => {
+    let producto=new Producto("cafe","en grano",5,5,"cafes");
+    expect(producto.categoria).toEqual("cafes");
+  });
+  
 });
