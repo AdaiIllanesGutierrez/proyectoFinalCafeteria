@@ -21,7 +21,7 @@ function Reservar(productos,reservas,listaReservas)
             if(CompararNombresProductos(productos[i],reservas[j]))
             {
                 if(typeof(productos[i]) == "object"){
-                    let nuevo = new Producto(productos[i].nombre, productos[i].descripcion,productos[i].precio,productos[i].cantidad);
+                    let nuevo = new Producto(productos[i].nombre, productos[i].descripcion,productos[i].precio,productos[i].cantidad,productos[i].categoria);
                     listaReservas.push(nuevo);
                 }
                 else{
@@ -50,8 +50,8 @@ function MostrarMenu(lista)
     return lista;
 }
 
-function CrearProducto(nombre, descripcion, precio, cantidad){
-    return new Producto(nombre, descripcion, precio, cantidad);
+function CrearProducto(nombre, descripcion, precio, cantidad,categoria){
+    return new Producto(nombre, descripcion, precio, cantidad,categoria);
 }
 function InsertarProducto(producto)
 {

@@ -4,7 +4,6 @@ import { Producto } from "./classProducto.js";
 const div2 = document.querySelector("#menu-div");
 const div3 = document.querySelector("#reservas-div");
 const formAgregarProducto = document.querySelector("#agregarProducto-form");
-
 const adminButton = document.getElementById("adminButton");
 const adminDiv = document.getElementById("admin");
 const cliButton = document.getElementById("clienteButton");
@@ -72,6 +71,7 @@ function renderizarProductos() {
             <p>Precio: ${producto.precio}</p>
             <p>Cantidad: ${producto.cantidad}</p>
             <button class="btn_eliminarReserva">Eliminar</button>
+            <button class="btn_confirmarReserva">Confirmar</button>
           </div>
         `;
       });

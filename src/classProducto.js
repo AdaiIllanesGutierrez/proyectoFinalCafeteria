@@ -1,10 +1,11 @@
 export class Producto{
-    constructor(nombre, descripcion, precio, cantidad){
+    constructor(nombre, descripcion, precio, cantidad,categoria){
         this._nombre = nombre;
         this._descripcion = descripcion;
         this._precio = precio;
         this._cantidad = cantidad;
         this._disponible = true;
+        this._categoria = categoria;
     }
 
     get nombre(){
@@ -26,6 +27,10 @@ export class Producto{
     get disponible()
     {
         return this._disponible;
+    }
+    
+    get categoria(){
+        return this._categoria;
     }
 
     set cantidad(cantidad){

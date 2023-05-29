@@ -4,10 +4,10 @@ import { Producto } from "./classProducto.js";
 
 describe("Mostrar Lista de Productos Estatica", () => {
   it("deberia mostrar un producto", () => {
-    expect(MostrarMenu([new Producto("cafe","en grano",5,10)])).toEqual([new Producto("cafe","en grano",5,10)]);
+    expect(MostrarMenu([new Producto("cafe","en grano",5,10,"cafes")])).toEqual([new Producto("cafe","en grano",5,10,"cafes")]);
   });
   it("deberia mostrar  una lista  de productos", () => {
-    expect(MostrarMenu([new Producto("cafe","en grano",5,10),new Producto("te","en sobre",4,10),new Producto("mate","en sobre",3,15)])).toEqual([new Producto("cafe","en grano",5,10),new Producto("te","en sobre",4,10),new Producto("mate","en sobre",3,15)]);
+    expect(MostrarMenu([new Producto("cafe","en grano",5,10,"cafes"),new Producto("te","en sobre",4,10,"Te's"),new Producto("mate","en sobre",3,15,"mates")])).toEqual([new Producto("cafe","en grano",5,10,"cafes"),new Producto("te","en sobre",4,10,"Te's"),new Producto("mate","en sobre",3,15,"mates")]);
   });
 });
 
@@ -37,19 +37,22 @@ describe("Mostrar Lista de Reservas Estatica", () => {
 
 describe("Crear un Producto", () => {
   it("deberia devolver el nombre de un producto", () => {
-    expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50).nombre).toEqual("cafe");
+    expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50,"cafes").nombre).toEqual("cafe");
   });
   it("deberia devolver la descripcion de un producto", () => {
-    expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50).descripcion).toEqual("250ml. en un vaso, azucar a gusto del cliente");
+    expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50,"cafes").descripcion).toEqual("250ml. en un vaso, azucar a gusto del cliente");
   });
   it("deberia devolver el precio de un producto", () => {
-    expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50).precio).toEqual(3.00);
+    expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50,"cafes").precio).toEqual(3.00);
   });
   it("deberia devolver la cantidad de un producto", () => {
-    expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50).cantidad).toEqual(50);
+    expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50,"cafes").cantidad).toEqual(50);
+  });
+  it("deberia devolver la categoria de un producto", () => {
+    expect(CrearProducto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50,"cafes").categoria).toEqual("cafes");
   });
   it("deberia devolver verdadero si es igual al nombre entre dos productos", () => {
-    expect(CompararNombresProductos(new Producto("cafe","",1.00, 2), new Producto("cafe","",2.00, 4))).toEqual(true);
+    expect(CompararNombresProductos(new Producto("cafe","",1.00, 2,"cafes"), new Producto("cafe","",2.00, 4,"cafes"))).toEqual(true);
   });
   it("deberia devolver verdadero si es igual al nombre entre dos productos", () => {
     expect(CompararNombresProductos("cafe", "cafe")).toEqual(true);
