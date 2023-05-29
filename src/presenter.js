@@ -1,13 +1,18 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto, ActualizarMenuCantidadProductoXReserva,ActualizarMenuCantidadProductoXReservaEliminado} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto, ActualizarMenuCantidadProductoXReserva,ActualizarMenuCantidadProductoXReservaEliminado,MostrarPorCategoria} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
 
 const div2 = document.querySelector("#menu-div");
 const div3 = document.querySelector("#reservas-div");
+
+const divCateg = document.querySelector("#div-categorias");
+const selectCategoria = document.querySelector("#select-categoria");
+
 const formAgregarProducto = document.querySelector("#agregarProducto-form");
 const adminButton = document.getElementById("adminButton");
 const adminDiv = document.getElementById("admin");
 const cliButton = document.getElementById("clienteButton");
 const clienteDiv = document.getElementById("cliente");
+
 let lista=[];
 let ListaReservas=[];
 
@@ -44,6 +49,13 @@ formAgregarProducto.addEventListener("submit", (event) => {
     renderizarProductos();
 });
 
+selectCategoria.addEventListener("change", function() {
+  const categoriaSeleccionada = selectCategoria.value;
+  const listaFiltrada = MostrarPorCategoria(categoriaSeleccionada, lista);
+  renderizarProductos(listaFiltrada);
+});
+
+
 function renderizarProductos() {
     let html = '<h1>MENÚ CAFETERIA CATO</h1>';
 
@@ -78,7 +90,9 @@ function renderizarProductos() {
             <button class="btn_confirmarReserva">Confirmar</button>
           </div>
         `;
-      });
+    });
+
+
       div2.innerHTML = html;
       div3.innerHTML = htmlReservas;
       const btnsReservar = document.getElementsByClassName("btn_reservar");
