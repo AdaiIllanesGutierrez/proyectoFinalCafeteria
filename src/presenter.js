@@ -38,10 +38,7 @@ formAgregarProducto.addEventListener("submit", (event) => {
     const categoria = document.querySelector("#categoria");
 
     const producto = CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value,categoria.value);
-    if (nombre.value === '' || descripcion.value === '' || precio.value === '' || cantidad.value === '') {
-      alert('Todos los campos deben estar llenos');
-      return; 
-    }
+    
     // localStorage.setItem("myCat", "Tom");
     
     InsertarProducto(producto);

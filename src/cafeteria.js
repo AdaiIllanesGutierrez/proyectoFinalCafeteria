@@ -2,6 +2,14 @@ import { Producto } from "./classProducto";
 let listaProductos=[];
 let Reservas = [];
 
+
+function VerificarCampos(nombre,descripcion,precio,cantidad){
+    if (nombre === '' || descripcion === '' || precio === '' || cantidad === '') {
+        //alert('Todos los campos deben estar llenos');
+        return false; 
+      }
+      return true;
+}
 function ActualizarMenuCantidadProductoXReservaEliminado(listaMenu, posicion, cantidad){
     listaMenu[posicion].cantidad = listaMenu[posicion].cantidad + cantidad;
     return listaMenu;
@@ -110,4 +118,4 @@ function editarProducto(producto1, producto2){
     return producto2;
 }
 
-module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos,editarProducto,eliminarProducto,ActualizarMenuCantidadProductoXReserva,ActualizarMenuCantidadProductoXReservaEliminado,MostrarPorCategoria};
+module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos,editarProducto,eliminarProducto,ActualizarMenuCantidadProductoXReserva,ActualizarMenuCantidadProductoXReservaEliminado,MostrarPorCategoria,VerificarCampos};

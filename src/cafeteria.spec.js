@@ -1,4 +1,4 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos,eliminarProducto,editarProducto,getListaProductos,getListaProductosReservas, ActualizarMenuCantidadProductoXReserva, ActualizarMenuCantidadProductoXReservaEliminado,MostrarPorCategoria} from "./cafeteria.js";
+import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto,  CompararNombresProductos,eliminarProducto,editarProducto,getListaProductos,getListaProductosReservas, ActualizarMenuCantidadProductoXReserva, ActualizarMenuCantidadProductoXReservaEliminado,MostrarPorCategoria,VerificarCampos} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
 
 
@@ -57,6 +57,7 @@ describe("Crear un Producto", () => {
   it("deberia devolver verdadero si es igual al nombre entre dos productos", () => {
     expect(CompararNombresProductos("cafe", "cafe")).toEqual(true);
   });
+
 });
 describe("eliminar Un producto", () => {
   it("elimina un producto por el nombre", () => {
@@ -131,5 +132,10 @@ describe("Mostrar Productos por Categoria", () => {
   it("Muestra toda la lista en caso de que la categoria sea todos", () => {
     let listaproductos=[new Producto("cafe","en grano",5,5,"cafes"),new Producto("mate","manzanilla",15,2,"mates"),new Producto("mocca","con cafe amargo",4,3,"cafes")];
     expect(MostrarPorCategoria("todos",listaproductos)).toEqual(listaproductos);
+  });
+});
+describe("Veriificacion de campos vacios", () => {
+  it("deberia devolver false en caso de que los campos esten vacios", () => {
+    expect(VerificarCampos('','',1,1)).toEqual(false);
   });
 });
