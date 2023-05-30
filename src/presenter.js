@@ -50,11 +50,27 @@ formAgregarProducto.addEventListener("submit", (event) => {
 });
 
 selectCategoria.addEventListener("change", function() {
-  const categoriaSeleccionada = selectCategoria.value;
-  const listaFiltrada = MostrarPorCategoria(categoriaSeleccionada, lista);
-  renderizarProductos(listaFiltrada);
+  let categoriaSeleccionada = selectCategoria.value;
+  let listaFiltrada = MostrarPorCategoria(categoriaSeleccionada, lista);
+  MostrarPorCategoriaProductos(listaFiltrada);
 });
+function MostrarPorCategoriaProductos(listafiltrada){
+let html='<h2>categorias</h2>';
 
+listafiltrada.forEach(producto=>{
+  html += `
+          <div>
+            <h3>Nombre: ${producto.nombre}</h3>
+            <p>Descripción: ${producto.descripcion}</p>
+            <p>Precio: ${producto.precio}</p>
+            <p>Cantidad: ${producto.cantidad}</p>
+            <p>Categoria: ${producto.categoria}</p>
+            <button class="btn_reservar">Reservar</button>
+            </div>
+            `;
+    });
+    divCateg.innerHTML=html;
+}
 
 function renderizarProductos() {
     let html = '<h1>MENÚ CAFETERIA CATO</h1>';
