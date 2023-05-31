@@ -22,6 +22,16 @@ function ActualizarMenuCantidadProductoXReserva(listaMenu, posicion, cantidad){
     return listaMenu;
 }
 
+function validarReserva(reserva,producto)
+{
+    if(reserva.cantidad<=producto.cantidad){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 function Reservar(productos,reservas,listaReservas,cantidad)
 {
     for(var i=0;i<productos.length;i++)
@@ -33,7 +43,9 @@ function Reservar(productos,reservas,listaReservas,cantidad)
                 if(typeof(productos[i]) == "object"){
                     let nuevo = new Producto(productos[i].nombre, productos[i].descripcion,productos[i].precio,productos[i].cantidad,productos[i].categoria);
                     let reserva=new Reserva(nuevo,cantidad);
-                    listaReservas.push(reserva);
+                    if(validarReserva(reserva,nuevo)){
+                        listaReservas.push(reserva);
+                    }
                 }
                 else{
                     listaReservas.push(productos[i]);

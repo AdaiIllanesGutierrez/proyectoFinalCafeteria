@@ -175,5 +175,8 @@ describe("Reservar un producto por cantidad", () => {
   it("si se reserva mas de un producto debe aparecer la cantidad en la lista de reservas en lugar de añadirse cuantos productos se haya resrevado", () => {
     expect(Reservar([new Producto('cafe','en grano',5,10,'cafes'),new Producto('sandwich','pan con huevo',6,5,'Refrigerios')],[new Producto('cafe','en grano',5,10,'cafes')],[],2)).toEqual([new Reserva(new Producto('cafe','en grano',5,10,'cafes'),2)]);
   });
+  it("resrevar una cantidad mayor a la cantidad disponible del producto deberia devolver una lista vacia", () => {
+    expect(Reservar([new Producto('cafe','en grano',5,2,'cafes'),new Producto('sandwich','pan con huevo',6,5,'Refrigerios')],[new Producto('cafe','en grano',5,2,'cafes')],[],3)).toEqual([]);
+  });
 });
 
