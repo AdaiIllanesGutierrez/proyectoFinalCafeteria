@@ -36,6 +36,9 @@ export class Producto{
     set cantidad(cantidad){
         this._cantidad = cantidad;
     }
+    set nombre(nombre){
+        this._nombre=nombre;
+    }
 
 
     ActualizarDisponibilidad()
