@@ -20,6 +20,7 @@ const nombreInput = document.getElementById("editNombre");
 const descripcionInput = document.getElementById("editDescripcion");
 const precioInput = document.getElementById("editPrecio");
 const cantidadInput = document.getElementById("editCantidad");
+const cateogiraInput = document.getElementById("editCategoria");
 
 let lista=[];
 let ListaReservas=[];
@@ -161,6 +162,7 @@ function mostrarFormularioEdicion(index) {
   descripcionInput.value = producto.descripcion;
   precioInput.value = producto.precio;
   cantidadInput.value = producto.cantidad;
+  cateogiraInput.value = producto.categoria;
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -168,10 +170,10 @@ function mostrarFormularioEdicion(index) {
     const nuevaDescripcion = descripcionInput.value;
     const nuevoPrecio = parseFloat(precioInput.value);
     const nuevaCantidad = parseInt(cantidadInput.value);
+    const nuevaCategoria = cateogiraInput.value;
 
     if (nuevoNombre && nuevaDescripcion && !isNaN(nuevoPrecio) && !isNaN(nuevaCantidad)) {
-      const productoEditado = new Producto(nuevoNombre, nuevaDescripcion, nuevoPrecio, nuevaCantidad);
-      lista[index] = Cafeteria.editarProducto(nuevoNombre, nuevaDescripcion, nuevoPrecio,nuevaCantidad, "x", lista[index]);
+      lista[index] = Cafeteria.editarProducto(nuevoNombre, nuevaDescripcion, nuevoPrecio,nuevaCantidad, nuevaCategoria, lista[index]);
       renderizarProductos();
       alert('Producto editado correctamente');
       ocultarFormularioEdicion();
