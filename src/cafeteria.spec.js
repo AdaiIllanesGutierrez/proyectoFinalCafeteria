@@ -13,16 +13,16 @@ describe("Mostrar Lista de Productos Estatica", () => {
 
 describe("Reservar un producto de una lista Estatica", () => {
   it("Agregar el primer producto de la lista a la lista de reservas", () => {
-    expect(Reservar(["cafe","mocca","te"],["cafe"],[])).toEqual(["cafe"]);
+    expect(Reservar(["cafe","mocca","te"],["cafe"],[],1)).toEqual(["cafe"]);
   });
   it("Agregar los dos primeros productos de la lista a la lista de reservas", () => {
-    expect(Reservar(["cafe","mocca"],["cafe","mocca"],[])).toEqual(["cafe","mocca"]);
+    expect(Reservar(["cafe","mocca"],["cafe","mocca"],[],1)).toEqual(["cafe","mocca"]);
   });
   it("deberia buscar el producto de la lista de reservas en la lista de productos ", () => {
-    expect(Reservar(["cafe","mocca"],["mocca"],[])).toEqual(["mocca"]);
+    expect(Reservar(["cafe","mocca"],["mocca"],[],1)).toEqual(["mocca"]);
   });
   it("deberia buscar los productos de la lista de reservas en la lista de productos y devolver la lista de reservas", () => {
-    expect(Reservar(["cafe","mocca","te","sandwich"],["mocca","sandwich"], [])).toEqual(["mocca","sandwich"]);
+    expect(Reservar(["cafe","mocca","te","sandwich"],["mocca","sandwich"], [],1)).toEqual(["mocca","sandwich"]);
   });
 });
 
@@ -163,3 +163,10 @@ describe("Veriificacion de campos vacios", () => {
     expect(VerificarCampos('cafe','sin azucar',1,1)).toEqual(true);
   });
 });
+
+describe("Reservar un producto por cantidad", () => {
+  it("deberia reservar 1 producto por defecto", () => {
+    expect(Reservar([new Producto('cafe','en grano',5,10,'cafes'),new Producto('sandwich','pan con huevo',6,5,'Refrigerios')],[new Producto('cafe','en grano',5,10,'cafes')],[],1)).toEqual([new Producto('cafe','en grano',5,10,'cafes')]);
+  });
+});
+

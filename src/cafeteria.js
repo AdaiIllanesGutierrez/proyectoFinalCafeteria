@@ -20,7 +20,7 @@ function ActualizarMenuCantidadProductoXReserva(listaMenu, posicion, cantidad){
     return listaMenu;
 }
 
-function Reservar(productos,reservas,listaReservas)
+function Reservar(productos,reservas,listaReservas,cantidad)
 {
     for(var i=0;i<productos.length;i++)
     {
@@ -30,12 +30,16 @@ function Reservar(productos,reservas,listaReservas)
             {
                 if(typeof(productos[i]) == "object"){
                     let nuevo = new Producto(productos[i].nombre, productos[i].descripcion,productos[i].precio,productos[i].cantidad,productos[i].categoria);
-                    listaReservas.push(nuevo);
+                    for(var c =0;c<cantidad;c++){
+                        listaReservas.push(nuevo);
+                    }
                 }
                 else{
-                    listaReservas.push(productos[i]);
+                    for(var c =0;c<cantidad;c++){
+                        listaReservas.push(productos[i]);
+                    }
+                    
                 }
-                
             }
         }
     }
