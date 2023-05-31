@@ -115,6 +115,10 @@ describe("Actualizar el inventario", () => {
     producto.disponible=true;
     expect(producto.disponible).toEqual(true);
   });
+  it("Deberia cambiar la categoria de un solo producto", () => {
+    producto.categoria="almuerzo";
+    expect(producto.categoria).toEqual("almuerzo");
+  });
   
 });
 

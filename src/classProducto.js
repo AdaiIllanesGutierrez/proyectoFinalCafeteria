@@ -48,8 +48,13 @@ export class Producto{
     set precio(precio){
         this._precio=precio;
     }
+
     set disponible(disponible){
         this._disponible=disponible;
+    }
+
+    set categoria(categoria){
+        this._categoria=categoria;
     }
 
 
