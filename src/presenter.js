@@ -15,6 +15,11 @@ const descripcion = document.querySelector("#descripcion");
 const precio = document.querySelector("#precio");
 const cantidad = document.querySelector("#cantidad");
 const categoria = document.querySelector("#categoria");
+const form = document.getElementById("editForm");
+const nombreInput = document.getElementById("editNombre");
+const descripcionInput = document.getElementById("editDescripcion");
+const precioInput = document.getElementById("editPrecio");
+const cantidadInput = document.getElementById("editCantidad");
 
 let lista=[];
 let ListaReservas=[];
@@ -104,6 +109,14 @@ function renderizarProductos() {
       const btnsReservar = document.getElementsByClassName("btn_reservar");
       const btnsEliminar = document.getElementsByClassName("btn_eliminar");
       const btnsEliminarReserva = document.getElementsByClassName("btn_eliminarReserva");
+      const btnsConfirmar = document.getElementsByClassName("btn_confirmarReserva");
+      for (let i = 0; i < btnsConfirmar.length; i++) {
+        btnsConfirmar[i].addEventListener("click", function () {
+          const indiceEncontrado = lista.findIndex((producto) => producto.nombre === ListaReservas[i].nombre);
+          lista[indiceEncontrado].cantidad = lista[indiceEncontrado].cantidad - ListaReservas[i].cantidad;
+          renderizarProductos();
+        });
+        }
       for (let i = 0; i < btnsEliminar.length; i++) {
       btnsEliminar[i].addEventListener("click", function () {
         Cafeteria.eliminarProducto(lista[i].nombre,lista);
@@ -116,7 +129,7 @@ function renderizarProductos() {
         ListaReservas = Cafeteria.getListaProductosReservas();
         ListaReservas = Cafeteria.Reservar(lista, [lista[i]], ListaReservas);
         ListaReservas[ListaReservas.length - 1].cantidad = 1; 
-        lista = Cafeteria.ActualizarMenuCantidadProductoXReserva(lista, i, 1);
+        //lista = Cafeteria.ActualizarMenuCantidadProductoXReserva(lista, i, 1);
         alert('se reservo correctamente');
         renderizarProductos();
         });
@@ -141,11 +154,7 @@ function renderizarProductos() {
 }
 
 function mostrarFormularioEdicion(index) {
-  const form = document.getElementById("editForm");
-  const nombreInput = document.getElementById("editNombre");
-  const descripcionInput = document.getElementById("editDescripcion");
-  const precioInput = document.getElementById("editPrecio");
-  const cantidadInput = document.getElementById("editCantidad");
+
 
   const producto = lista[index];
   nombreInput.value = producto.nombre;
@@ -155,7 +164,6 @@ function mostrarFormularioEdicion(index) {
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-
     const nuevoNombre = nombreInput.value;
     const nuevaDescripcion = descripcionInput.value;
     const nuevoPrecio = parseFloat(precioInput.value);
