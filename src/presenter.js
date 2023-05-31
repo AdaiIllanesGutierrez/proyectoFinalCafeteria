@@ -106,6 +106,14 @@ function renderizarProductos() {
       const btnsReservar = document.getElementsByClassName("btn_reservar");
       const btnsEliminar = document.getElementsByClassName("btn_eliminar");
       const btnsEliminarReserva = document.getElementsByClassName("btn_eliminarReserva");
+      const btnsConfirmar = document.getElementsByClassName("btn_confirmarReserva");
+      for (let i = 0; i < btnsConfirmar.length; i++) {
+        btnsConfirmar[i].addEventListener("click", function () {
+          const indiceEncontrado = lista.findIndex((producto) => producto.nombre === ListaReservas[i].nombre);
+          lista[indiceEncontrado].cantidad = lista[indiceEncontrado].cantidad - ListaReservas[i].cantidad;
+          renderizarProductos();
+        });
+        }
       for (let i = 0; i < btnsEliminar.length; i++) {
       btnsEliminar[i].addEventListener("click", function () {
         Cafeteria.eliminarProducto(lista[i].nombre,lista);
@@ -118,7 +126,6 @@ function renderizarProductos() {
         ListaReservas = Cafeteria.getListaProductosReservas();
         ListaReservas = Cafeteria.Reservar(lista, [lista[i]], ListaReservas);
         ListaReservas[ListaReservas.length - 1].cantidad = 1; 
-        lista = Cafeteria.ActualizarMenuCantidadProductoXReserva(lista, i, 1);
         alert('se reservo correctamente');
         renderizarProductos();
         });
