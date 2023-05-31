@@ -111,6 +111,10 @@ describe("Actualizar el inventario", () => {
     producto.precio=15;
     expect(producto.precio).toEqual(15);
   });
+  it("Deberia cambiar la disponibilidad de un solo producto", () => {
+    producto.disponible=true;
+    expect(producto.disponible).toEqual(true);
+  });
   
 });
 

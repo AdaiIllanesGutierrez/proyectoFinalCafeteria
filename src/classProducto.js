@@ -48,6 +48,9 @@ export class Producto{
     set precio(precio){
         this._precio=precio;
     }
+    set disponible(disponible){
+        this._disponible=disponible;
+    }
 
 
     ActualizarDisponibilidad()
