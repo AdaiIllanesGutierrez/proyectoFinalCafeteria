@@ -99,9 +99,13 @@ describe("Actualizar el inventario", () => {
   it("Deberia sumar la cantidad de un solo producto", () => {
     expect(ActualizarMenuCantidadProductoXReservaEliminado([new Producto("caffe","cafe en vaso",5,10)], 0, 1)).toEqual([new Producto("caffe","cafe en vaso",5,11)]);
   });
-  it("Deberia cambiar la cantidad de un solo producto", () => {
+  it("Deberia cambiar el nombre de un solo producto", () => {
     producto.nombre="oreo";
     expect(producto.nombre).toEqual("oreo");
+  });
+  it("Deberia cambiar la descripcion de un solo producto", () => {
+    producto.descripcion="sin azucar";
+    expect(producto.descripcion).toEqual("sin azucar");
   });
   
 });
