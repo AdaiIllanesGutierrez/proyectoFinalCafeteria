@@ -1,4 +1,6 @@
 import { Producto } from "./classProducto";
+import { Reserva } from "./classReserva";
+
 let listaProductos=[];
 let Reservas = [];
 
@@ -28,15 +30,13 @@ function Reservar(productos,reservas,listaReservas,cantidad)
         {
             if(CompararNombresProductos(productos[i],reservas[j]))
             {
-                for(var c=0;c<cantidad;c++)
-                {
-                    if(typeof(productos[i]) == "object"){
-                        let nuevo = new Producto(productos[i].nombre, productos[i].descripcion,productos[i].precio,productos[i].cantidad,productos[i].categoria);
-                        listaReservas.push(nuevo);
-                    }
-                    else{
-                        listaReservas.push(productos[i]);
-                    }
+                if(typeof(productos[i]) == "object"){
+                    let nuevo = new Producto(productos[i].nombre, productos[i].descripcion,productos[i].precio,productos[i].cantidad,productos[i].categoria);
+                    let reserva=new Reserva(nuevo,cantidad);
+                    listaReservas.push(reserva);
+                }
+                else{
+                    listaReservas.push(productos[i]);
                 }
             }
         }
