@@ -127,8 +127,12 @@ function renderizarProductos() {
       }
       for (let i = 0; i < btnsReservar.length; i++) {
         btnsReservar[i].addEventListener("click", function () {
+          let cantidad = prompt("Ingrese la cantidad a reservar:");
+          if (cantidad !== null && cantidad !== "") {
+            cantidad = parseInt(cantidad);
+          }
         ListaReservas = Cafeteria.getListaProductosReservas();
-        ListaReservas = Cafeteria.Reservar(lista, [lista[i]], ListaReservas);
+        ListaReservas = Cafeteria.Reservar(lista, [lista[i]], ListaReservas,cantidad);
         ListaReservas[ListaReservas.length - 1].cantidad = 1; 
         //lista = Cafeteria.ActualizarMenuCantidadProductoXReserva(lista, i, 1);
         alert('se reservo correctamente');
