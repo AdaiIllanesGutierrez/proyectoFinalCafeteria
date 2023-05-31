@@ -45,6 +45,10 @@ export class Producto{
         this._descripcion=descripcion;
     }
 
+    set precio(precio){
+        this._precio=precio;
+    }
+
 
     ActualizarDisponibilidad()
     {

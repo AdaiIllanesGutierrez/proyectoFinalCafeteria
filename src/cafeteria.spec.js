@@ -107,6 +107,10 @@ describe("Actualizar el inventario", () => {
     producto.descripcion="sin azucar";
     expect(producto.descripcion).toEqual("sin azucar");
   });
+  it("Deberia cambiar el precio de un solo producto", () => {
+    producto.precio=15;
+    expect(producto.precio).toEqual(15);
+  });
   
 });
 
