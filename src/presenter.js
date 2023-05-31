@@ -1,4 +1,6 @@
 import { Producto } from "./classProducto.js";
+import { Reserva } from "./classReserva.js";
+
 import * as Cafeteria from "./cafeteria.js"
 
 const div2 = document.querySelector("#menu-div");
@@ -55,14 +57,14 @@ selectCategoria.addEventListener("change", function() {
 function MostrarPorCategoriaProductos(listafiltrada){
 let html='<h2>categorias</h2>';
 
-listafiltrada.forEach(producto=>{
+listafiltrada.forEach(reserva=>{
   html += `
           <div>
-            <h3>Nombre: ${producto.nombre}</h3>
-            <p>Descripción: ${producto.descripcion}</p>
-            <p>Precio: ${producto.precio}</p>
-            <p>Cantidad: ${producto.cantidad}</p>
-            <p>Categoria: ${producto.categoria}</p>
+            <h3>Nombre: ${reserva.producto.nombre}</h3>
+            <p>Descripción: ${reserva.producto.descripcion}</p>
+            <p>Precio: ${reserva.producto.precio}</p>
+            <p>Cantidad: ${reserva.cantidad}</p>
+            <p>Categoria: ${reserva.producto.categoria}</p>
             <button class="btn_reservar">Reservar</button>
             </div>
             `;
@@ -90,14 +92,14 @@ function renderizarProductos() {
         `;
     });
 
-    ListaReservas.forEach(producto => {
+    ListaReservas.forEach(reserva => {
       htmlReservas += `
         <div>
-            <h3>Nombre: ${producto.nombre}</h3>
-            <p>Descripción: ${producto.descripcion}</p>
-            <p>Precio: ${producto.precio}</p>
-            <p>Cantidad: ${producto.cantidad}</p>
-            <p>Categoria: ${producto.categoria}</p>
+            <h3>Nombre: ${reserva.producto.nombre}</h3>
+            <p>Descripción: ${reserva.producto.descripcion}</p>
+            <p>Precio: ${reserva.producto.precio}</p>
+            <p>Cantidad: ${reserva.cantidad}</p>
+            <p>Categoria: ${reserva.producto.categoria}</p>
             <button class="btn_eliminarReserva">Eliminar</button>
             <button class="btn_confirmarReserva">Confirmar</button>
           </div>
