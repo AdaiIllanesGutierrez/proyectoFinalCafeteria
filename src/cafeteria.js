@@ -28,17 +28,15 @@ function Reservar(productos,reservas,listaReservas,cantidad)
         {
             if(CompararNombresProductos(productos[i],reservas[j]))
             {
-                if(typeof(productos[i]) == "object"){
-                    let nuevo = new Producto(productos[i].nombre, productos[i].descripcion,productos[i].precio,productos[i].cantidad,productos[i].categoria);
-                    for(var c =0;c<cantidad;c++){
+                for(var c=0;c<cantidad;c++)
+                {
+                    if(typeof(productos[i]) == "object"){
+                        let nuevo = new Producto(productos[i].nombre, productos[i].descripcion,productos[i].precio,productos[i].cantidad,productos[i].categoria);
                         listaReservas.push(nuevo);
                     }
-                }
-                else{
-                    for(var c =0;c<cantidad;c++){
+                    else{
                         listaReservas.push(productos[i]);
                     }
-                    
                 }
             }
         }

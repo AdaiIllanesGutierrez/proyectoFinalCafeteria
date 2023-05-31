@@ -168,5 +168,8 @@ describe("Reservar un producto por cantidad", () => {
   it("deberia reservar 1 producto por defecto", () => {
     expect(Reservar([new Producto('cafe','en grano',5,10,'cafes'),new Producto('sandwich','pan con huevo',6,5,'Refrigerios')],[new Producto('cafe','en grano',5,10,'cafes')],[],1)).toEqual([new Producto('cafe','en grano',5,10,'cafes')]);
   });
+  it("si se reserva una cantidad de 2 de cualquier producto debe añadirse el mismo producto 2 veces a la lista de reservas", () => {
+    expect(Reservar([new Producto('cafe','en grano',5,10,'cafes'),new Producto('sandwich','pan con huevo',6,5,'Refrigerios')],[new Producto('cafe','en grano',5,10,'cafes')],[],2)).toEqual([new Producto('cafe','en grano',5,10,'cafes'),new Producto('cafe','en grano',5,10,'cafes')]);
+  });
 });
 
