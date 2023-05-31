@@ -114,8 +114,13 @@ function eliminarProducto(nombreProducto,listaProductos) {
 }
 
 
-function editarProducto(producto1, producto2){
-    return producto2;
+function editarProducto(nombre, descripcion, precio, cantidad, categoria, producto){
+    producto.nombre = nombre;
+    producto.descripcion = descripcion;
+    producto.precio = precio;
+    producto.cantidad = cantidad;
+    producto.categoria = categoria;
+    return producto;
 }
 
 module.exports = { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,  CompararNombresProductos,editarProducto,eliminarProducto,ActualizarMenuCantidadProductoXReserva,ActualizarMenuCantidadProductoXReservaEliminado,MostrarPorCategoria,VerificarCampos};

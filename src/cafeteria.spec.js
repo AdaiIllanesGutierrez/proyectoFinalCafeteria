@@ -71,8 +71,8 @@ describe("eliminar Un producto", () => {
   });
 });
 describe("Editar Producto", () => {
-  it("deberia editar el nombre de un producto", () => {
-    expect(editarProducto(new Producto("","", 0,0), new Producto("caffe", "", 0,0).nombre)).toEqual("caffe");
+  it("deberia editar el producto", () => {
+    expect( editarProducto("Oreo", "4 galletas con crema de Leche", 3.00, 5, "refrigerio", new Producto("cafe", "250ml. en un vaso, azucar a gusto del cliente", 3.00, 50))).toEqual(new Producto("Oreo", "4 galletas con crema de Leche", 3.00, 5, "refrigerio"));
   });
 });
 describe("Listas globales", () => {

@@ -171,7 +171,7 @@ function mostrarFormularioEdicion(index) {
 
     if (nuevoNombre && nuevaDescripcion && !isNaN(nuevoPrecio) && !isNaN(nuevaCantidad)) {
       const productoEditado = new Producto(nuevoNombre, nuevaDescripcion, nuevoPrecio, nuevaCantidad);
-      lista[index] = productoEditado;
+      lista[index] = Cafeteria.editarProducto(nuevoNombre, nuevaDescripcion, nuevoPrecio,nuevaCantidad, "x", lista[index]);
       renderizarProductos();
       alert('Producto editado correctamente');
       ocultarFormularioEdicion();
