@@ -3,15 +3,18 @@ import * as Cafeteria from "./cafeteria.js"
 
 const div2 = document.querySelector("#menu-div");
 const div3 = document.querySelector("#reservas-div");
-
 const divCateg = document.querySelector("#div-categorias");
 const selectCategoria = document.querySelector("#select-categoria");
-
 const formAgregarProducto = document.querySelector("#agregarProducto-form");
 const adminButton = document.getElementById("adminButton");
 const adminDiv = document.getElementById("admin");
 const cliButton = document.getElementById("clienteButton");
 const clienteDiv = document.getElementById("cliente");
+const nombre = document.querySelector("#nombre");
+const descripcion = document.querySelector("#descripcion");
+const precio = document.querySelector("#precio");
+const cantidad = document.querySelector("#cantidad");
+const categoria = document.querySelector("#categoria");
 
 let lista=[];
 let ListaReservas=[];
@@ -30,16 +33,11 @@ cliButton.addEventListener("click", function() {
 
 formAgregarProducto.addEventListener("submit", (event) => {
     event.preventDefault();
-    const nombre = document.querySelector("#nombre");
-    const descripcion = document.querySelector("#descripcion");
-    const precio = document.querySelector("#precio");
-    const cantidad = document.querySelector("#cantidad");
-    const categoria = document.querySelector("#categoria");
-  
     const producto = Cafeteria.CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value,categoria.value);
-    
+    if(!Cafeteria.VerificarCampos(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value,categoria.value)) return;
     Cafeteria.InsertarProducto(producto);
     renderizarProductos();
+    formAgregarProducto.reset();
 });
 
 selectCategoria.addEventListener("change", function() {
@@ -71,7 +69,7 @@ function renderizarProductos() {
 
     let htmlReservas = '<h1>Mis RESERVAS</h1>';
     lista=Cafeteria.getListaProductos();
-    lista.forEach(producto => {
+    lista.forEach((producto, i) => {
         html += `
           <div>
             <h3>Nombre: ${producto.nombre}</h3>
@@ -80,7 +78,7 @@ function renderizarProductos() {
             <p>Cantidad: ${producto.cantidad}</p>
             <p>Categoria: ${producto.categoria}</p>
             <button class="btn_reservar">Reservar</button>
-            <button class="btn_editar">Editar</button>
+            <button class="btn_editar" data-index="${i}">Editar</button>
             <button class="btn_eliminar">Eliminar</button>
           </div>
         `;
@@ -106,14 +104,6 @@ function renderizarProductos() {
       const btnsReservar = document.getElementsByClassName("btn_reservar");
       const btnsEliminar = document.getElementsByClassName("btn_eliminar");
       const btnsEliminarReserva = document.getElementsByClassName("btn_eliminarReserva");
-      const btnsConfirmar = document.getElementsByClassName("btn_confirmarReserva");
-      for (let i = 0; i < btnsConfirmar.length; i++) {
-        btnsConfirmar[i].addEventListener("click", function () {
-          const indiceEncontrado = lista.findIndex((producto) => producto.nombre === ListaReservas[i].nombre);
-          lista[indiceEncontrado].cantidad = lista[indiceEncontrado].cantidad - ListaReservas[i].cantidad;
-          renderizarProductos();
-        });
-        }
       for (let i = 0; i < btnsEliminar.length; i++) {
       btnsEliminar[i].addEventListener("click", function () {
         Cafeteria.eliminarProducto(lista[i].nombre,lista);
@@ -126,6 +116,7 @@ function renderizarProductos() {
         ListaReservas = Cafeteria.getListaProductosReservas();
         ListaReservas = Cafeteria.Reservar(lista, [lista[i]], ListaReservas);
         ListaReservas[ListaReservas.length - 1].cantidad = 1; 
+        lista = Cafeteria.ActualizarMenuCantidadProductoXReserva(lista, i, 1);
         alert('se reservo correctamente');
         renderizarProductos();
         });
@@ -138,16 +129,53 @@ function renderizarProductos() {
         renderizarProductos();
         });
       }
-      const btnsEditar = document.getElementsByClassName("btn_editar");
-      for (let i = 0; i < btnsEditar.length; i++) {
-          btnsEditar[i].addEventListener("click", function () {
-          const nuevoNombre = prompt('Ingrese el nuevo nombre del producto');
-          const nuevaDescripcion = prompt('Ingrese la nueva descripción del producto');
-          const nuevoPrecio = parseFloat(prompt('Ingrese el nuevo precio del producto'));
-          const nuevaCantidad = parseInt(prompt('Ingrese la nueva cantidad del producto'));
-          const productoeditado = new Producto(nuevoNombre,nuevaDescripcion,nuevoPrecio,nuevaCantidad);
-          lista[i]=productoeditado;  
-          renderizarProductos();
+      //const btnsEditar = document.getElementsByClassName("btn_editar");
+    const btnsEditar = document.getElementsByClassName("btn_editar");
+    for (let i = 0; i < btnsEditar.length; i++) {
+    btnsEditar[i].addEventListener("click", function () {
+      const index = this.getAttribute("data-index");
+      mostrarFormularioEdicion(index);
     });
+  
   }
+}
+
+function mostrarFormularioEdicion(index) {
+  const form = document.getElementById("editForm");
+  const nombreInput = document.getElementById("editNombre");
+  const descripcionInput = document.getElementById("editDescripcion");
+  const precioInput = document.getElementById("editPrecio");
+  const cantidadInput = document.getElementById("editCantidad");
+
+  const producto = lista[index];
+  nombreInput.value = producto.nombre;
+  descripcionInput.value = producto.descripcion;
+  precioInput.value = producto.precio;
+  cantidadInput.value = producto.cantidad;
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const nuevoNombre = nombreInput.value;
+    const nuevaDescripcion = descripcionInput.value;
+    const nuevoPrecio = parseFloat(precioInput.value);
+    const nuevaCantidad = parseInt(cantidadInput.value);
+
+    if (nuevoNombre && nuevaDescripcion && !isNaN(nuevoPrecio) && !isNaN(nuevaCantidad)) {
+      const productoEditado = new Producto(nuevoNombre, nuevaDescripcion, nuevoPrecio, nuevaCantidad);
+      lista[index] = productoEditado;
+      renderizarProductos();
+      alert('Producto editado correctamente');
+      ocultarFormularioEdicion();
+    } else {
+      alert('Todos los campos deben estar llenos y el precio y la cantidad deben ser números');
+    }
+  });
+
+  document.getElementById("editarForm").style.display = "block";
+}
+
+function ocultarFormularioEdicion() {
+  document.getElementById("editForm").reset();
+  document.getElementById("editarForm").style.display = "none";
 }
