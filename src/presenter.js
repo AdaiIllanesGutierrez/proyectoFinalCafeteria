@@ -1,5 +1,5 @@
-import { Reservar, MostrarMenu,MostrarListaReservas, CrearProducto, InsertarProducto, getListaProductos, getListaProductosReservas,editarProducto,eliminarProducto, ActualizarMenuCantidadProductoXReserva,ActualizarMenuCantidadProductoXReservaEliminado,MostrarPorCategoria} from "./cafeteria.js";
 import { Producto } from "./classProducto.js";
+import * as Cafeteria from "./cafeteria.js"
 
 const div2 = document.querySelector("#menu-div");
 const div3 = document.querySelector("#reservas-div");
@@ -18,7 +18,6 @@ let ListaReservas=[];
 
 adminDiv.style.display = "none";
 
-
 adminButton.addEventListener("click", function() {
   adminDiv.style.display = "block";
   clienteDiv.style.display = "none";
@@ -36,21 +35,19 @@ formAgregarProducto.addEventListener("submit", (event) => {
     const precio = document.querySelector("#precio");
     const cantidad = document.querySelector("#cantidad");
     const categoria = document.querySelector("#categoria");
-
-    const producto = CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value,categoria.value);
+  
+    const producto = Cafeteria.CrearProducto(nombre.value, descripcion.value, parseFloat(precio.value), cantidad.value,categoria.value);
     
-    // localStorage.setItem("myCat", "Tom");
-    
-    InsertarProducto(producto);
-    // lista = getListaProductos();
+    Cafeteria.InsertarProducto(producto);
     renderizarProductos();
 });
 
 selectCategoria.addEventListener("change", function() {
   let categoriaSeleccionada = selectCategoria.value;
-  let listaFiltrada = MostrarPorCategoria(categoriaSeleccionada, lista);
+  let listaFiltrada =Cafeteria.MostrarPorCategoria(categoriaSeleccionada, lista);
   MostrarPorCategoriaProductos(listaFiltrada);
 });
+
 function MostrarPorCategoriaProductos(listafiltrada){
 let html='<h2>categorias</h2>';
 
@@ -73,9 +70,7 @@ function renderizarProductos() {
     let html = '<h1>MENÚ CAFETERIA CATO</h1>';
 
     let htmlReservas = '<h1>Mis RESERVAS</h1>';
-    lista=getListaProductos();
-    localStorage.setItem('productos',JSON.stringify(lista));
-    //JSON.parse(localStorage.getItem('productos'));
+    lista=Cafeteria.getListaProductos();
     lista.forEach(producto => {
         html += `
           <div>
@@ -113,28 +108,25 @@ function renderizarProductos() {
       const btnsEliminarReserva = document.getElementsByClassName("btn_eliminarReserva");
       for (let i = 0; i < btnsEliminar.length; i++) {
       btnsEliminar[i].addEventListener("click", function () {
-        //eliminarProductoEspecifico(lista[i].nombre);
-        eliminarProducto(lista[i].nombre,lista);
+        Cafeteria.eliminarProducto(lista[i].nombre,lista);
         renderizarProductos();
         alert('se elimino correctamente');
         });
       }
       for (let i = 0; i < btnsReservar.length; i++) {
         btnsReservar[i].addEventListener("click", function () {
-        ListaReservas = getListaProductosReservas();
-        ListaReservas = Reservar(lista, [lista[i]], ListaReservas);
+        ListaReservas = Cafeteria.getListaProductosReservas();
+        ListaReservas = Cafeteria.Reservar(lista, [lista[i]], ListaReservas);
         ListaReservas[ListaReservas.length - 1].cantidad = 1; 
-        lista = ActualizarMenuCantidadProductoXReserva(lista, i, 1);
+        lista = Cafeteria.ActualizarMenuCantidadProductoXReserva(lista, i, 1);
         alert('se reservo correctamente');
-        // lista=getListaProductos();
         renderizarProductos();
         });
       }
       for (let i = 0; i <  btnsEliminarReserva.length; i++) {
         btnsEliminarReserva[i].addEventListener("click", function () {
         let pos = lista.indexOf(ListaReservas[i].nombre);
-        ListaReservas = eliminarProducto(ListaReservas[i].nombre,ListaReservas);
-        //lista = ActualizarMenuCantidadProductoXReservaEliminado(lista, pos, 1);
+        ListaReservas = Cafeteria.eliminarProducto(ListaReservas[i].nombre,ListaReservas);
         alert('se elimino la reserva reservo correctamente');
         renderizarProductos();
         });
@@ -152,4 +144,3 @@ function renderizarProductos() {
     });
   }
 }
-  

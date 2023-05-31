@@ -138,4 +138,7 @@ describe("Veriificacion de campos vacios", () => {
   it("deberia devolver false en caso de que los campos esten vacios", () => {
     expect(VerificarCampos('','',1,1)).toEqual(false);
   });
+  it("deberia devolver false en caso de que los campos esten vacios", () => {
+    expect(VerificarCampos('cafe','sin azucar',1,1)).toEqual(true);
+  });
 });
