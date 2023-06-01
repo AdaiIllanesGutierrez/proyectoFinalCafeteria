@@ -113,13 +113,6 @@ function renderizarProductos() {
       const btnsEliminar = document.getElementsByClassName("btn_eliminar");
       const btnsEliminarReserva = document.getElementsByClassName("btn_eliminarReserva");
       const btnsConfirmar = document.getElementsByClassName("btn_confirmarReserva");
-      for (let i = 0; i < btnsConfirmar.length; i++) {
-        btnsConfirmar[i].addEventListener("click", function () {
-          const indiceEncontrado = lista.findIndex((producto) => producto.nombre === ListaReservas[i].nombre);
-          lista[indiceEncontrado].cantidad = lista[indiceEncontrado].cantidad - ListaReservas[i].cantidad;
-          renderizarProductos();
-        });
-        }
       for (let i = 0; i < btnsEliminar.length; i++) {
       btnsEliminar[i].addEventListener("click", function () {
         Cafeteria.eliminarProducto(lista[i].nombre,lista);
@@ -135,12 +128,20 @@ function renderizarProductos() {
           }
         ListaReservas = Cafeteria.getListaProductosReservas();
         ListaReservas = Cafeteria.Reservar(lista, [lista[i]], ListaReservas,cantidad);
-        ListaReservas[ListaReservas.length - 1].cantidad = 1; 
-        //lista = Cafeteria.ActualizarMenuCantidadProductoXReserva(lista, i, 1);
+        //ListaReservas[ListaReservas.length - 1].cantidad = cantidad; 
+        //lista = Cafeteria.ActualizarMenuCantidadProductoXReserva(lista, i, cantidad);
         
         renderizarProductos();
         });
       }
+      for (let i = 0; i < btnsConfirmar.length; i++) {
+        btnsConfirmar[i].addEventListener("click", function () {
+          const indiceEncontrado = lista.findIndex((producto) => producto.nombre === ListaReservas[i].producto.nombre);
+          lista = Cafeteria.ActualizarMenuCantidadProductoXReserva(lista, indiceEncontrado, ListaReservas[i].cantidad);
+          // lista[indiceEncontrado].cantidad = lista[indiceEncontrado].cantidad - ListaReservas[i].cantidad;
+          renderizarProductos();
+        });
+        }
       for (let i = 0; i <  btnsEliminarReserva.length; i++) {
         btnsEliminarReserva[i].addEventListener("click", function () {
         let pos = lista.indexOf(ListaReservas[i].nombre);
