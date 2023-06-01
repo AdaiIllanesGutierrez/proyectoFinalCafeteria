@@ -1,5 +1,3 @@
-import { Producto } from "./classProducto";
-
 export class Reserva{
     constructor(producto,cantidad){
         this._producto=producto;

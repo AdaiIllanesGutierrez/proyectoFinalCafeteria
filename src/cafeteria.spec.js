@@ -179,3 +179,14 @@ describe("Reservar un producto por cantidad", () => {
     expect(Reservar([new Producto('cafe','en grano',5,2,'cafes'),new Producto('sandwich','pan con huevo',6,5,'Refrigerios')],[new Producto('cafe','en grano',5,2,'cafes')],[],3)).toEqual([]);
   });
 });
+describe('Reserva', () => {
+  it('debería devolver el producto y cantidad correctamente', () => {
+    const productoEsperado = 'Producto';
+    const cantidadEsperada = 5;
+    const reserva = new Reserva(productoEsperado, cantidadEsperada);
+    const productoObtenido = reserva.producto;
+    const cantidadObtenida = reserva.cantidad;
+    expect(productoObtenido).toEqual(productoEsperado);
+    expect(cantidadObtenida).toEqual(cantidadEsperada);
+  });
+});
