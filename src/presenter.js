@@ -32,10 +32,26 @@ adminDiv.style.display = "none";
 adminButton.addEventListener("click", function() {
   adminDiv.style.display = "block";
   clienteDiv.style.display = "none";
+
+  const adminButtons = document.getElementsByClassName("admin-button");
+  for (let i = 0; i < adminButtons.length; i++) {
+    adminButtons[i].style.display = "block";
+  }
+  const clientButtons = document.getElementsByClassName("client-button");
+  for (let i = 0; i < clientButtons.length; i++) {
+    clientButtons[i].style.display = "none";
+  }
 });
+
 cliButton.addEventListener("click", function() {
   adminDiv.style.display = "none";
   clienteDiv.style.display ="block";
+  //Ocultar botones de editar y eliminar
+  const adminButtons = document.getElementsByClassName("admin-button");
+  for (let i = 0; i < adminButtons.length; i++) {
+    adminButtons[i].style.display = "none";
+  }
+
 });
 
 
@@ -85,9 +101,9 @@ function renderizarProductos() {
             <p>Precio: ${producto.precio}</p>
             <p>Cantidad: ${producto.cantidad}</p>
             <p>Categoria: ${producto.categoria}</p>
-            <button class="btn_reservar">Reservar</button>
-            <button class="btn_editar" data-index="${i}">Editar</button>
-            <button class="btn_eliminar">Eliminar</button>
+            <button class="btn_reservar client-button">Reservar</button>
+            <button class="btn_editar admin-button" data-index="${i}">Editar</button>
+            <button class="btn_eliminar admin-button">Eliminar</button>
           </div>
         `;
     });
