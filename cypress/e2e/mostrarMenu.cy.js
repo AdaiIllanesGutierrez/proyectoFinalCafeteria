@@ -102,4 +102,31 @@ describe("Prueba de vizualizacion de mis productos", () => {
     cy.get(".btn_editar").click();
     cy.get("#editarForm").should("be.visible");
   });
-});
+ 
+  
+    it('debería editar el formulario correctamente', () => {
+      cy.visit("/");
+    cy.get("#adminButton").click();
+    cy.get("#nombre").type("Sopa");
+    cy.get("#descripcion").type("Sopa de fideo");
+    cy.get("#precio").type(20);
+    cy.get("#cantidad").type(2);
+    cy.get("#categoria").select('Almuerzos')
+    cy.get("#agregar-button").click();
+    cy.get("#menu-div").should("contain", "Sopa");
+    cy.get("#menu-div").should("contain", "Sopa de fideo");
+    cy.get("#menu-div").should("contain", 20);
+    cy.get("#menu-div").should("contain", 2);
+    cy.get('#menu-div').should('contain', 'almuerzos')
+    cy.get(".btn_editar").click();
+    cy.get("#editarForm").should("be.visible");
+    cy.get('#editNombre').clear().type('Nuevo Nombre');
+    cy.get('#editDescripcion').clear().type('Nueva Descripción');
+    cy.get('#editPrecio').clear().type('10');
+    cy.get('#editCantidad').clear().type('5');
+    cy.get('#editForm').submit();
+  
+
+    });
+  });
+  
