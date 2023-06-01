@@ -1,27 +1,41 @@
 
-  describe("Prueba de visualización de productos", () => {
-    it("Verifica que los productos se muestren correctamente", () => {
-      // Ingresa a la página que muestra los productos
-      cy.visit("/");
+describe("Pruebas de visualización y funcionalidad", () => {
+  beforeEach(() => {
+    cy.visit("/");
+  });
+
+  it("Debe mostrar el div 'admin' y ocultar el menú al hacer clic en 'admin'", () => {
+    cy.get("#adminButton").click();
+    cy.get("#admin").should("be.visible");
+    cy.get("#menu-div").should("not.be.visible");
+  });
+
+  it("Debe ocultar el div 'admin' y mostrar el menú al hacer clic en 'cliente'", () => {
+    cy.get("#clienteButton").click();
+    cy.get("#admin").should("not.be.visible");
+  });
   
-      // Simula una lista de productos
+});
+
+  /*describe("Prueba de visualización de productos", () => {
+    it("Verifica que los productos se muestren correctamente", () => {
+      cy.visit("/");
       const listaProductos = [
         {
-          nombre: "Producto 1",
-          descripcion: "Descripción del producto 1",
+          nombre: "cafe",
+          descripcion: "expresso",
           precio: 10.99,
           cantidad: 5,
+          categoria: "cafes"
         },
         {
-          nombre: "Producto 2",
-          descripcion: "Descripción del producto 2",
+          nombre: "mate de manzanilla",
+          descripcion: "sin azucar medicinal",
           precio: 19.99,
           cantidad: 10,
+          categoria: "mates"
         },
-        // Agrega más productos según sea necesario
       ];
-  
-      // Renderiza los productos en el HTML
       let html = "";
       listaProductos.forEach(producto => {
         html += `
@@ -36,12 +50,10 @@
           </div>
         `;
       });
-  
-      // Inserta los productos renderizados en el HTML de la página
+
       cy.get("#menu-div").then(div => {
         div.html(html);
       });
-  
       // Verifica que los productos se muestren correctamente en la página
       listaProductos.forEach(producto => {
         cy.contains("Nombre: " + producto.nombre);
@@ -51,22 +63,26 @@
       });
     });
   });
+*/
+ 
+describe("Prueba de vizualizacion de mis productos", () => {
 
-  describe("Pruebas de visualización y funcionalidad", () => {
-    beforeEach(() => {
-      cy.visit("/");
-    });
-  
-    it("Debe mostrar el div 'admin' y ocultar el menú al hacer clic en 'admin'", () => {
-      cy.get("#adminButton").click();
-      cy.get("#admin").should("be.visible");
-      cy.get("#menu-div").should("not.be.visible");
-    });
+  it("deberia llenar los inputs con mi  pedido realizado", () => {
+    cy.visit("/");
+    cy.get("#adminButton").click();
 
-    it("Debe ocultar el div 'admin' y mostrar el menú al hacer clic en 'cliente'", () => {
-      cy.get("#clienteButton").click();
-      cy.get("#admin").should("not.be.visible");
-    });
-    
+    cy.get("#nombre").type("Sopa");
+    cy.get("#descripcion").type("Sopa de fideo");
+    cy.get("#precio").type(20);
+    cy.get("#cantidad").type(2);
+    cy.get("#categoria").select('Almuerzos')
+   
+    cy.get("#agregar-button").click();
+
+    cy.get("#menu-div").should("contain", "Sopa");
+    cy.get("#menu-div").should("contain", "Sopa de fideo");
+    cy.get("#menu-div").should("contain", 20);
+    cy.get("#menu-div").should("contain", 2);
+    cy.get('#menu-div').should('contain', 'almuerzos')
   });
-  
+});
